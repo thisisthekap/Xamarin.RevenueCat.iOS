@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <PackageId>Xamarin.RevenueCat.iOS</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Christian Kapplmüller</Authors>
+        <Company>fun.music IT GmbH</Company>
+        <PackageOutputPath>nugetoutput</PackageOutputPath>
+        <PackageLicensePath>..\..\LICENSE.txt</PackageLicensePath>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <ProjectGuid>{EAA9C04E-CFAD-49D2-A3A8-168A811D79DA}</ProjectGuid>
+        <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
+        <OutputType>Library</OutputType>
+        <RootNamespace>Purchases</RootNamespace>
+        <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+        <AssemblyName>Purchases</AssemblyName>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>full</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="Xamarin.iOS" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Resources\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="LICENSE.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <NativeReference Include="nativelib\Purchases.framework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
+        </NativeReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.7.0" />
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+    <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
+        <ItemGroup>
+            <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+            <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+        </ItemGroup>
+    </Target>
+</Project>
