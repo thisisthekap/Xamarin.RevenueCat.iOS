@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <Authors>Christian Kapplmüller</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
