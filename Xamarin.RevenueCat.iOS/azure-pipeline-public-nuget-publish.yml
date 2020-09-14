@@ -29,8 +29,19 @@ steps:
     msbuild /t:Build /p:Configuration=Release
     msbuild /t:Pack /p:Configuration=Release
 
-- bash: |
-    dotnet nuget push Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg -k "$(azureDevOpsRepoApiKey)" -s "$(azureDevOpsRepoTargetUrl)"
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: 'push'
+    packagesToPush: 'Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '95a4928e-7a26-4e37-a11b-e681e1d9910c'
+    allowPackageConflicts: true
+
+#- bash: |
+#    dotnet nuget push Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg -k "$(azureDevOpsRepoApiKey)" -s "$(azureDevOpsRepoTargetUrl)"
 
 #- task: GitHubRelease@1
 #  inputs:
