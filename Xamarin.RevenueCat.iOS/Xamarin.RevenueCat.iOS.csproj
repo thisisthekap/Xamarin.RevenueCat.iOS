@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>1.0.9</Version>
+        <Version>1.1.1</Version>
         <Authors>Christian Kapplmüller</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
@@ -59,13 +59,13 @@
         <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     </ItemGroup>
     <ItemGroup>
-        <NativeReference Include="nativelib\Purchases.framework">
-            <Kind>Framework</Kind>
-            <SmartLink>False</SmartLink>
-        </NativeReference>
+        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.7.0" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.7.0" />
+      <NativeReference Include="nativelib\libPurchases.a">
+        <Kind>Static</Kind>
+        <SmartLink>False</SmartLink>
+      </NativeReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
     <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
