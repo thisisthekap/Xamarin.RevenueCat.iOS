@@ -30,17 +30,17 @@ steps:
     msbuild /t:Pack /p:Configuration=Release
 
 - bash: |
-    dotnet nuget push Xamarin.RevenueCat.Android/nugetoutput/Xamarin.RevenueCat.Android.*.nupkg -k "$(nugetOrgApiKey)" -s https://api.nuget.org/v3/index.json
+    dotnet nuget push Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg -k "notneeded" -s $(azureDevOpsRepoTargetUrl)
 
-- task: GitHubRelease@1
-  inputs:
-    gitHubConnection: 'github.com_thisisthekap'
-    repositoryName: 'thisisthekap/Xamarin.RevenueCat.Android'
-    action: 'create'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'userSpecifiedTag'
-    tag: '$(Build.SourceBranchName)'
-    title: 'Xamarin.RevenueCat.Android $(bindingsVersion)'
-    assets: 'Xamarin.RevenueCat.Android/nugetoutput/Xamarin.RevenueCat.Android.*.nupkg'
-    changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'issueBased'
+#- task: GitHubRelease@1
+#  inputs:
+#    gitHubConnection: 'github.com_thisisthekap'
+#    repositoryName: 'thisisthekap/Xamarin.RevenueCat.iOS'
+#    action: 'create'
+#    target: '$(Build.SourceVersion)'
+#    tagSource: 'userSpecifiedTag'
+#    tag: '$(Build.SourceBranchName)'
+#    title: 'Xamarin.RevenueCat.iOS $(bindingsVersion)'
+#    assets: 'Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg'
+#    changeLogCompareToRelease: 'lastFullRelease'
+#    changeLogType: 'issueBased'
