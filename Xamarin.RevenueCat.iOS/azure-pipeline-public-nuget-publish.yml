@@ -30,7 +30,7 @@ steps:
     msbuild /t:Pack /p:Configuration=Release
 
 - bash: |
-    dotnet nuget push Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg -k "notneeded" -s $(azureDevOpsRepoTargetUrl)
+    dotnet nuget push Xamarin.RevenueCat.iOS/nugetoutput/Xamarin.RevenueCat.iOS.*.nupkg -k "notneeded" -s "XamarinRevenueCatBindings"
 
 #- task: GitHubRelease@1
 #  inputs:
