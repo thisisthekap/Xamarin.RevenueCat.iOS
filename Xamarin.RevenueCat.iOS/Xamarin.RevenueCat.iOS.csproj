@@ -7,7 +7,7 @@
         <Authors>Christian Kapplmüller</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
-        <PackageLicensePath>..\..\LICENSE.txt</PackageLicensePath>
+        <PackageLicensePath>..\..\..\LICENSE.txt</PackageLicensePath>
     </PropertyGroup>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,9 +48,6 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="LICENSE.txt" />
     </ItemGroup>
     <ItemGroup>
         <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
