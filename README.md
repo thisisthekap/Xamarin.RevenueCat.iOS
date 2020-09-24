@@ -47,7 +47,7 @@ This section describes how to create `ApiBindings.cs` and `StructsAndEnums.cs`.
 
 #### Tip when updating to newer version of revenuecat/purchases-ios
 
-To find out which API changed were made between two versions of revenuecat/purchases-ios, you could execute sharpie twice:
+To find out which API changes were made between two versions of revenuecat/purchases-ios, you could execute sharpie twice:
 
 1. Execute steps 1 to 3 from the steps above
 	* Do not change the version of `revenuecat/purchases-ios` in `revenuecat-version.txt`
