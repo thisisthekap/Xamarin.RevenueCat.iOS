@@ -4,7 +4,17 @@ Xamarin.iOS Bindings for RevenueCat ([Website](https://www.revenuecat.com/), [Se
 
 ## NuGet Feed
 
+### Xamarin.RevenueCat.iOS
+
+The actual bindings.
+
 [https://www.nuget.org/packages/Xamarin.RevenueCat.iOS/](https://www.nuget.org/packages/Xamarin.RevenueCat.iOS/)
+
+### Xamarin.RevenueCat.iOS.Extensions
+
+Contains extension methods for `Xamarin.RevenueCat.iOS` adding e.g. async/await convenience methods.
+
+[https://www.nuget.org/packages/Xamarin.RevenueCat.iOS.Extensions/](https://www.nuget.org/packages/Xamarin.RevenueCat.iOS.Extensions/)
 
 ## Versioning Scheme
 
