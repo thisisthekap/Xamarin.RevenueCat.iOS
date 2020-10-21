@@ -3,11 +3,13 @@ trigger:
     include:
       - refs/tags/release-extensions-v*
 
+pr: none
+
 pool:
   vmImage: 'macOS-10.15'
 
 variables:
-  - group: tonestro.private.artifacts
+  - group: nuget.org
 
 steps:
 
@@ -29,29 +31,18 @@ steps:
     msbuild /t:Build /p:Configuration=Release
     msbuild /t:Pack /p:Configuration=Release
 
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
+- bash: |
+    dotnet nuget push Xamarin.RevenueCat.iOS.Extensions/nugetoutput/Xamarin.RevenueCat.iOS.Extensions.*.nupkg -k "$(nugetOrgApiKey)" -s https://api.nuget.org/v3/index.json
+
+- task: GitHubRelease@1
   inputs:
-    command: 'push'
-    packagesToPush: 'Xamarin.RevenueCat.iOS.Extensions/nugetoutput/Xamarin.RevenueCat.iOS.Extensions.*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '95a4928e-7a26-4e37-a11b-e681e1d9910c'
-    allowPackageConflicts: true
-
-#- bash: |
-#    dotnet nuget push Xamarin.RevenueCat.iOS.Extensions/nugetoutput/Xamarin.RevenueCat.iOS.Extensions.*.nupkg -k "$(azureDevOpsRepoApiKey)" -s "$(azureDevOpsRepoTargetUrl)"
-
-#- task: GitHubRelease@1
-#  inputs:
-#    gitHubConnection: 'github.com_thisisthekap'
-#    repositoryName: 'thisisthekap/Xamarin.RevenueCat.iOS'
-#    action: 'create'
-#    target: '$(Build.SourceVersion)'
-#    tagSource: 'userSpecifiedTag'
-#    tag: '$(Build.SourceBranchName)'
-#    title: 'Xamarin.RevenueCat.iOS.Extensions $(bindingsVersion)'
-#    assets: 'Xamarin.RevenueCat.iOS.Extensions/nugetoutput/Xamarin.RevenueCat.iOS.Extensions.*.nupkg'
-#    changeLogCompareToRelease: 'lastFullRelease'
-#    changeLogType: 'issueBased'
+    gitHubConnection: 'github.com_thisisthekap'
+    repositoryName: 'thisisthekap/Xamarin.RevenueCat.iOS'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'userSpecifiedTag'
+    tag: '$(Build.SourceBranchName)'
+    title: 'Xamarin.RevenueCat.iOS.Extensions $(bindingsVersion)'
+    assets: 'Xamarin.RevenueCat.iOS.Extensions/nugetoutput/Xamarin.RevenueCat.iOS.Extensions.*.nupkg'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'issueBased'
