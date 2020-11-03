@@ -1,6 +1,6 @@
 #!/bin/bash
 revenueCatVersion=$(cat ./revenuecat-version.txt)
-targetSdk=iphoneos13.7
+targetSdk=iphoneos14.1
 
 git clone https://github.com/RevenueCat/purchases-ios.git
 cd purchases-ios
