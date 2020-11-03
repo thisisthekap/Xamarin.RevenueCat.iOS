@@ -9,6 +9,25 @@ namespace Xamarin.RevenueCat.iOS.Extensions
 {
     public static class RCPurchasesExtensions
     {
+        public static Task<RCPurchaserInfo> IdentifyAsync(this RCPurchases purchases, string appUserId,
+            CancellationToken cancellationToken = default)
+        {
+            var tcs = new TaskCompletionSource<RCPurchaserInfo>();
+            cancellationToken.Register(() => tcs.TrySetCanceled());
+            purchases.Identify(appUserId, (purchaserInfo, error) =>
+            {
+                if (error != null)
+                {
+                    tcs.TrySetException(new PurchasesErrorException(error, false));
+                }
+                else
+                {
+                    tcs.TrySetResult(purchaserInfo);
+                }
+            });
+            return tcs.Task;
+        }
+
         public static Task<RCOfferings> GetOfferingsAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
@@ -20,8 +39,10 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 {
                     tcs.TrySetException(new PurchasesErrorException(error, false));
                 }
-
-                tcs.TrySetResult(offerings);
+                else
+                {
+                    tcs.TrySetResult(offerings);
+                }
             });
             return tcs.Task;
         }
@@ -38,18 +59,20 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                     {
                         tcs.TrySetException(new PurchasesErrorException(error, userCancelled));
                     }
-
-                    if (userCancelled)
+                    else if (userCancelled)
                     {
                         tcs.TrySetException(new PurchasesErrorException(null, true));
                     }
-
-                    tcs.TrySetResult(new PurchaseSuccessInfo(transaction, purchaserInfo));
+                    else
+                    {
+                        tcs.TrySetResult(new PurchaseSuccessInfo(transaction, purchaserInfo));
+                    }
                 });
             return tcs.Task;
         }
 
-        public static Task<RCPurchaserInfo> RestoreTransactionsAsync(this RCPurchases purchases, CancellationToken cancellationToken = default)
+        public static Task<RCPurchaserInfo> RestoreTransactionsAsync(this RCPurchases purchases,
+            CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCPurchaserInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
@@ -59,13 +82,16 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 {
                     tcs.TrySetException(new PurchasesErrorException(error, false));
                 }
-
-                tcs.TrySetResult(purchaserInfo);
+                else
+                {
+                    tcs.TrySetResult(purchaserInfo);
+                }
             });
             return tcs.Task;
         }
 
-        public static Task<RCPurchaserInfo> GetPurchaserInfoAsync(this RCPurchases purchases, CancellationToken cancellationToken = default)
+        public static Task<RCPurchaserInfo> GetPurchaserInfoAsync(this RCPurchases purchases,
+            CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCPurchaserInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
@@ -75,8 +101,10 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 {
                     tcs.TrySetException(new PurchasesErrorException(error, false));
                 }
-
-                tcs.TrySetResult(purchaserInfo);
+                else
+                {
+                    tcs.TrySetResult(purchaserInfo);
+                }
             });
             return tcs.Task;
         }
