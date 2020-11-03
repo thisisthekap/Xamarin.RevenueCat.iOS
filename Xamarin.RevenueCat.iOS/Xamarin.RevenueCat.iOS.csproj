@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>3.5.3.7</Version>
+        <Version>3.5.3.8</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
         <Authors>Christian Kapplmüller</Authors>
         <Company>fun.music IT GmbH</Company>
