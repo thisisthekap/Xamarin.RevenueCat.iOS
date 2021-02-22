@@ -37,6 +37,8 @@ Add `-gcc_flags "-ObjC"` to the `MtouchExtraArgs` XML element of your project fi
 
 ![troubleshooting-unrecognized-selector](readme-images/troubleshooting-unrecognized-selector.png)
 
+Please see [this issue](https://github.com/thisisthekap/Xamarin.RevenueCat.iOS/issues/13) for more details.
+
 ## How to bind new version
 
 This section explains how to create resp. adapt the bindings to bind to a newer version of RevenueCat for iOS.
