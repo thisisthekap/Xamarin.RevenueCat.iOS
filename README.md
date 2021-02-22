@@ -27,6 +27,18 @@ The versioning scheme of `Xamarin.RevenueCat.iOS` is derived from the versioning
 | 3.4.1 | 3.4.1.1 | First version of bindings for 3.4.1 |
 | 3.4.1 | 3.4.1.17 | Bindings for 3.4.1 containing fixes |
 
+## Troubleshooting
+
+### unrecognized selector sent to instance
+
+If initialization crashes and you get errors like `[RCPurchases configureSubscriberAttributesManager]: unrecognized selector sent to instance`, please adapt your project configuration:
+
+Add `-gcc_flags "-ObjC"` to the `MtouchExtraArgs` XML element of your project file. If you want to do the config change using the UI Editor, the change is given below:
+
+![troubleshooting-unrecognized-selector](readme-images/troubleshooting-unrecognized-selector.png)
+
+Please see [this issue](https://github.com/thisisthekap/Xamarin.RevenueCat.iOS/issues/13) for more details.
+
 ## How to bind new version
 
 This section explains how to create resp. adapt the bindings to bind to a newer version of RevenueCat for iOS.
