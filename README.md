@@ -35,7 +35,7 @@ If initialization crashes and you get errors like `[RCPurchases configureSubscri
 
 Add `-gcc_flags "-ObjC"` to the `MtouchExtraArgs` XML element of your project file. If you want to do the config change using the UI Editor, the change is given below:
 
-TODO add image
+![troubleshooting-unrecognized-selector](readme-images/troubleshooting-unrecognized-selector.png)
 
 ## How to bind new version
 
