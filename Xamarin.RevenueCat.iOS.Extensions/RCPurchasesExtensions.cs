@@ -1,20 +1,19 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Foundation;
-using Purchases;
-using StoreKit;
-using Xamarin.RevenueCat.iOS.Extensions.Exceptions;
+using RevenueCat;
 
 namespace Xamarin.RevenueCat.iOS.Extensions
 {
+    // ReSharper disable once InconsistentNaming
     public static class RCPurchasesExtensions
     {
-        public static Task<RCPurchaserInfo> IdentifyAsync(this RCPurchases purchases, string appUserId,
+        public static Task<LoginResult> LoginAsync(this RCPurchases purchases, string appUserId,
             CancellationToken cancellationToken = default)
         {
-            var tcs = new TaskCompletionSource<RCPurchaserInfo>();
+            var tcs = new TaskCompletionSource<LoginResult>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.Identify(appUserId, (purchaserInfo, error) =>
+            purchases.LogIn(appUserId, (customerInfo, created, error) =>
             {
                 if (error != null)
                 {
@@ -22,7 +21,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 }
                 else
                 {
-                    tcs.TrySetResult(purchaserInfo);
+                    tcs.TrySetResult(new LoginResult(customerInfo, created));
                 }
             });
             return tcs.Task;
@@ -33,7 +32,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCOfferings>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.OfferingsWithCompletionBlock((RCOfferings offerings, NSError error) =>
+            purchases.GetOfferingsWithCompletion((RCOfferings offerings, NSError error) =>
             {
                 if (error != null)
                 {
@@ -53,7 +52,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
             var tcs = new TaskCompletionSource<PurchaseSuccessInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
             purchases.PurchasePackage(packageToPurchase,
-                (SKPaymentTransaction transaction, RCPurchaserInfo purchaserInfo, NSError error, bool userCancelled) =>
+                (RCStoreTransaction transaction, RCCustomerInfo customerInfo, NSError error, bool userCancelled) =>
                 {
                     if (error != null)
                     {
@@ -65,18 +64,18 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                     }
                     else
                     {
-                        tcs.TrySetResult(new PurchaseSuccessInfo(transaction, purchaserInfo));
+                        tcs.TrySetResult(new PurchaseSuccessInfo(transaction, customerInfo));
                     }
                 });
             return tcs.Task;
         }
 
-        public static Task<RCPurchaserInfo> RestoreTransactionsAsync(this RCPurchases purchases,
+        public static Task<RCCustomerInfo> RestoreTransactionsAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
-            var tcs = new TaskCompletionSource<RCPurchaserInfo>();
+            var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.RestoreTransactionsWithCompletionBlock((RCPurchaserInfo purchaserInfo, NSError error) =>
+            purchases.RestorePurchasesWithCompletion((RCCustomerInfo customerInfo, NSError error) =>
             {
                 if (error != null)
                 {
@@ -84,18 +83,18 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 }
                 else
                 {
-                    tcs.TrySetResult(purchaserInfo);
+                    tcs.TrySetResult(customerInfo);
                 }
             });
             return tcs.Task;
         }
 
-        public static Task<RCPurchaserInfo> GetPurchaserInfoAsync(this RCPurchases purchases,
+        public static Task<RCCustomerInfo> GetCustomerInfoAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
-            var tcs = new TaskCompletionSource<RCPurchaserInfo>();
+            var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.PurchaserInfoWithCompletionBlock((RCPurchaserInfo purchaserInfo, NSError error) =>
+            purchases.GetCustomerInfoWithCompletion((RCCustomerInfo customerInfo, NSError error) =>
             {
                 if (error != null)
                 {
@@ -103,7 +102,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 }
                 else
                 {
-                    tcs.TrySetResult(purchaserInfo);
+                    tcs.TrySetResult(customerInfo);
                 }
             });
             return tcs.Task;

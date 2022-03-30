@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>3.5.3.10</Version>
+        <Version>4.1.0.4</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
         <Authors>Christian Kapplmüller</Authors>
         <Company>fun.music IT GmbH</Company>
@@ -41,35 +41,34 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System" />
-        <Reference Include="Xamarin.iOS" />
+        <Reference Include="System"/>
+        <Reference Include="Xamarin.iOS"/>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\" />
+        <Folder Include="Additions\"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Additions\ErrorDetails.cs"/>
     </ItemGroup>
     <ItemGroup>
-        <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+        <ObjcBindingApiDefinition Include="ApiDefinitions.cs"/>
     </ItemGroup>
     <ItemGroup>
-        <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+        <ObjcBindingCoreSource Include="StructsAndEnums.cs"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.7.0" />
+        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.1.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <NativeReference Include="nativelib\libPurchases.a">
-        <Kind>Static</Kind>
-        <SmartLink>False</SmartLink>
-      </NativeReference>
+        <NativeReference Include="nativelib\RevenueCat.framework">
+            <Kind>Framework</Kind>
+            <SmartLink>False</SmartLink>
+            <ForceLoad>True</ForceLoad>
+        </NativeReference>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
-    <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
-        <ItemGroup>
-            <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
-            <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
-        </ItemGroup>
-    </Target>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets"/>
 </Project>
