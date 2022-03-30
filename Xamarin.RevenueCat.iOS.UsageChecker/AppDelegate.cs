@@ -1,5 +1,5 @@
 using Foundation;
-using Purchases;
+using RevenueCat;
 using UIKit;
 
 namespace Xamarin.RevenueCat.iOS.UsageChecker

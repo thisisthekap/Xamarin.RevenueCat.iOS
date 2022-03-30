@@ -1,17 +1,16 @@
-﻿using Purchases;
-using StoreKit;
+﻿using RevenueCat;
 
 namespace Xamarin.RevenueCat.iOS.Extensions
 {
-    public class PurchaseSuccessInfo
+    public struct PurchaseSuccessInfo
     {
-        public SKPaymentTransaction Transaction { get; }
-        public RCPurchaserInfo PurchaserInfo { get; }
+        public RCStoreTransaction Transaction { get; }
+        public RCCustomerInfo CustomerInfo { get; }
 
-        public PurchaseSuccessInfo(SKPaymentTransaction transaction, RCPurchaserInfo purchaserInfo)
+        public PurchaseSuccessInfo(RCStoreTransaction transaction, RCCustomerInfo customerInfo)
         {
             Transaction = transaction;
-            PurchaserInfo = purchaserInfo;
+            CustomerInfo = customerInfo;
         }
     }
 }
