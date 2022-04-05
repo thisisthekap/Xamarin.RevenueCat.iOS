@@ -27,6 +27,25 @@ namespace Xamarin.RevenueCat.iOS.Extensions
             return tcs.Task;
         }
 
+        public static Task<RCCustomerInfo> LogoutAsync(this RCPurchases purchases,
+            CancellationToken cancellationToken = default)
+        {
+            var tcs = new TaskCompletionSource<RCCustomerInfo>();
+            cancellationToken.Register(() => tcs.TrySetCanceled());
+            purchases.LogOutWithCompletion((customerInfo, error) =>
+            {
+                if (error != null)
+                {
+                    tcs.TrySetException(new PurchasesErrorException(error, false));
+                }
+                else
+                {
+                    tcs.TrySetResult(customerInfo);
+                }
+            });
+            return tcs.Task;
+        }
+
         public static Task<RCOfferings> GetOfferingsAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
