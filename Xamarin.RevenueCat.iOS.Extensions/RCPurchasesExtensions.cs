@@ -27,7 +27,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
             return tcs.Task;
         }
 
-        public static Task<RCCustomerInfo> LogoutAsync(this RCPurchases purchases,
+        public static Task<RCCustomerInfo> LogOutAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
