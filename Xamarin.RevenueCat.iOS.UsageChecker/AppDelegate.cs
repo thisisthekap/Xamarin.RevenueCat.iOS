@@ -1,3 +1,4 @@
+using System;
 using Foundation;
 using RevenueCat;
 using UIKit;
@@ -18,6 +19,7 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
         {
             RCPurchases.DebugLogsEnabled = true;
             RCPurchases.ConfigureWithAPIKey("theapikey");
+            Console.WriteLine($"Bound RevenueCat iOS SDK Version: {RCPurchases.FrameworkVersion}");
 
             return true;
         }

@@ -16,6 +16,15 @@ namespace RevenueCat
     }
 
     [Native]
+    public enum RCCacheFetchPolicy : long
+    {
+        FromCacheOnly = 0,
+        FetchCurrent = 1,
+        NotStaleCachedOrFetched = 2,
+        CachedOrFetched = 3,
+    }
+
+    [Native]
     public enum RCPurchasesErrorCode : long
     {
         UnknownError = 0,
@@ -45,7 +54,6 @@ namespace RevenueCat
         UnsupportedError = 24,
         EmptySubscriberAttributesError = 25,
         ProductDiscountMissingIdentifierError = 26,
-        MissingAppUserIDForAliasCreationError = 27,
         ProductDiscountMissingSubscriptionGroupIdentifierError = 28,
         CustomerInfoError = 29,
         SystemInfoError = 30,
@@ -53,6 +61,7 @@ namespace RevenueCat
         ProductRequestTimedOut = 32,
         APIEndpointBlocked = 33,
         InvalidPromotionalOfferError = 34,
+        OfflineConnectionError = 35,
     }
 
     [Native]
@@ -129,6 +138,7 @@ namespace RevenueCat
         Stripe = 3,
         Promotional = 4,
         UnknownStore = 5,
+        Amazon = 6,
     }
 
     [Native]
