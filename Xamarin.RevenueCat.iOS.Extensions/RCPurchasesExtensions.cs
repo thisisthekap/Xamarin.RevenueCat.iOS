@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Foundation;
 using RevenueCat;
@@ -89,7 +90,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
             return tcs.Task;
         }
 
-        public static Task<RCCustomerInfo> RestoreTransactionsAsync(this RCPurchases purchases,
+        public static Task<RCCustomerInfo> RestorePurchasesAsync(this RCPurchases purchases,
             CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
@@ -106,6 +107,13 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 }
             });
             return tcs.Task;
+        }
+
+        [Obsolete("Obsolete due to confusing naming. Use RestorePurchasesAsync instead.")]
+        public static Task<RCCustomerInfo> RestoreTransactionsAsync(this RCPurchases purchases,
+            CancellationToken cancellationToken = default)
+        {
+            return RestorePurchasesAsync(purchases, cancellationToken);
         }
 
         public static Task<RCCustomerInfo> GetCustomerInfoAsync(this RCPurchases purchases,
