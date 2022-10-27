@@ -9,7 +9,7 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
         public ViewController(IntPtr handle) : base(handle)
         {
             var userCancelledException = new PurchasesErrorException(null, true);
-            Console.WriteLine(userCancelledException.ToString());
+            Console.WriteLine(userCancelledException);
         }
 
         public override void ViewDidLoad()
