@@ -136,6 +136,10 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\Xamarin.RevenueCat.iOS.Extensions\Xamarin.RevenueCat.iOS.Extensions.csproj">
+        <Project>{9774c184-1a52-40a3-82f7-3d27f92ad38e}</Project>
+        <Name>Xamarin.RevenueCat.iOS.Extensions</Name>
+      </ProjectReference>
       <ProjectReference Include="..\Xamarin.RevenueCat.iOS\Xamarin.RevenueCat.iOS.csproj">
         <Project>{EAA9C04E-CFAD-49D2-A3A8-168A811D79DA}</Project>
         <Name>Xamarin.RevenueCat.iOS</Name>
