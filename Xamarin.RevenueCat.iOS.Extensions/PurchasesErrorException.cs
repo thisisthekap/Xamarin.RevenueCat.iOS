@@ -15,8 +15,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         public RCPurchasesErrorCode PurchasesErrorCode { get; }
 
         public PurchasesErrorException(NSError purchasesError, bool userCancelled)
-            : base($"{purchasesError?.Description} userCancelled: {userCancelled}",
-                new NSErrorException(purchasesError))
+            : base($"{purchasesError?.Description} userCancelled: {userCancelled}", WrapError(purchasesError))
         {
             PurchasesError = purchasesError;
             UserCancelled = userCancelled;
@@ -32,6 +31,16 @@ namespace Xamarin.RevenueCat.iOS.Extensions
                 int purchaseErrorCodeInt = (int)purchasesError.Code;
                 PurchasesErrorCode = (RCPurchasesErrorCode)purchaseErrorCodeInt;
             }
+        }
+
+        private static NSErrorException WrapError(NSError purchasesError)
+        {
+            if (purchasesError != null)
+            {
+                return new NSErrorException(purchasesError);
+            }
+
+            return null;
         }
     }
 }
