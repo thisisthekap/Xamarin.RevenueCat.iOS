@@ -39,6 +39,12 @@ Add `-gcc_flags "-ObjC"` to the `MtouchExtraArgs` XML element of your project fi
 
 Please see [this issue](https://github.com/thisisthekap/Xamarin.RevenueCat.iOS/issues/13) for more details.
 
+## Sample Code
+
+[@BillFulton](https://github.com/BillFulton) created a repository with sample code using this binding. Thanks for that!
+
+The repository with the sample code is available [here](https://github.com/BillFulton/RevenueCatXamarin).
+
 ## License
 
 The license for this repository is specified in 
