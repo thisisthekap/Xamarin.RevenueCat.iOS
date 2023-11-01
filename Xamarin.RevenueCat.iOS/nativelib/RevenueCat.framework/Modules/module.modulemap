@@ -6,6 +6,6 @@ framework module RevenueCat {
 }
 
 module RevenueCat.Swift {
-    header "RevenueCat-Swift.h"
-    requires objc
+  header "RevenueCat-Swift.h"
+  requires objc
 }

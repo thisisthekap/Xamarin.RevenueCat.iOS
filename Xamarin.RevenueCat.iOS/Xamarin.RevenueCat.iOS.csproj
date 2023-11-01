@@ -3,9 +3,9 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>4.9.0.2</Version>
+        <Version>4.29.0.1</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
-        <Authors>Christian Kapplmüller</Authors>
+        <Authors>Christian Kapplmüller, Albilaga</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
         <PackageLicensePath>..\..\..\LICENSE.txt</PackageLicensePath>
