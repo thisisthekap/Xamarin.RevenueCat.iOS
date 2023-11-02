@@ -14,7 +14,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<LoginResult>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.LogIn(appUserId, (customerInfo, created, error) =>
+            purchases.LogInWithCompletion(appUserId, (customerInfo, created, error) =>
             {
                 if (error != null)
                 {

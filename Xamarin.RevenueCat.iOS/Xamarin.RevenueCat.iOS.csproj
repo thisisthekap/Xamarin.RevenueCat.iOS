@@ -3,12 +3,12 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>4.9.0.2</Version>
+        <Version>4.30.0.1</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
-        <Authors>Christian Kapplmüller</Authors>
+        <Authors>Christian Kapplmüller, ALbilaga</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
-        <PackageLicensePath>..\..\..\LICENSE.txt</PackageLicensePath>
+        <PackageLicensePath>..\LICENSE.txt</PackageLicensePath>
     </PropertyGroup>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -68,7 +68,28 @@
             <Kind>Framework</Kind>
             <SmartLink>False</SmartLink>
             <ForceLoad>True</ForceLoad>
+            <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>
+            <IsCxx>False</IsCxx>
         </NativeReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+    
+    <Target Name="StripBitcode" AfterTargets="Build">
+        <Message Text="Stripping Bitcode..." Importance="high" />
+
+        <!-- Diagnostic messages to ensure paths and commands are correct -->
+        <Message Text="Framework Path: nativelib/RevenueCat.framework" Importance="high" />
+        <Exec Command="ls -l nativelib/RevenueCat.framework" />
+
+        <Message Text="Finding the bitcode_strip command..." Importance="high" />
+        <Exec Command="xcrun -find bitcode_strip" ConsoleToMSBuild="true">
+            <Output TaskParameter="ConsoleOutput" PropertyName="BitcodeStripCommand" />
+        </Exec>
+
+        <Message Text="Bitcode_strip command found: $(BitcodeStripCommand)" Importance="high" />
+        <Message Text="Stripping the bitcode from frameworks..." Importance="high" />
+
+        <Exec Command="$(BitcodeStripCommand) nativelib/RevenueCat.framework/RevenueCat -r -o nativelib/RevenueCat.framework/RevenueCat" />
+        <Message Text="Bitcode stripping complete." Importance="high" />
+    </Target>
 </Project>
