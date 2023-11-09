@@ -14,7 +14,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<LoginResult>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.Login(appUserId, (customerInfo, created, error) =>
+            purchases.LogIn(appUserId, (customerInfo, created, error) =>
             {
                 if (error != null)
                 {
@@ -33,7 +33,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.Logout((customerInfo, error) =>
+            purchases.LogOut((customerInfo, error) =>
             {
                 if (error != null)
                 {

@@ -679,7 +679,7 @@ namespace RevenueCat
 
 		// @required -(void)logIn:(NSString * _Nonnull)appUserID completion:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, BOOL, NSError * _Nullable))completion;
 		[Export("logIn:completion:")]
-		void Login(string appUserID, Action<RCCustomerInfo, bool, NSError> completion);
+		void LogIn(string appUserID, Action<RCCustomerInfo, bool, NSError> completion);
 
 		// @required -(void)logIn:(NSString * _Nonnull)appUserID completionHandler:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, BOOL, NSError * _Nullable))completionHandler __attribute__((availability(watchos, introduced=6.2))) __attribute__((availability(tvos, introduced=13.0))) __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0)));
 		[Export("logIn:completionHandler:")]
@@ -687,7 +687,7 @@ namespace RevenueCat
 
 		// @required -(void)logOutWithCompletion:(void (^ _Nullable)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
 		[Export("logOutWithCompletion:")]
-		void Logout([NullAllowed] Action<RCCustomerInfo, NSError> completion);
+		void LogOut([NullAllowed] Action<RCCustomerInfo, NSError> completion);
 
 		// @required -(void)logOutWithCompletionHandler:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completionHandler __attribute__((availability(watchos, introduced=6.2))) __attribute__((availability(tvos, introduced=13.0))) __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0)));
 		[Export("logOutWithCompletionHandler:")]
