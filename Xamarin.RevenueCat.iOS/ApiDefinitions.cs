@@ -1030,7 +1030,7 @@ namespace RevenueCat
 
 		// -(void)logOutWithCompletion:(void (^ _Nullable)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
 		[Export("logOutWithCompletion:")]
-		void LogOutWithCompletion([NullAllowed] Action<RCCustomerInfo, NSError> completion);
+		void LogOut([NullAllowed] Action<RCCustomerInfo, NSError> completion);
 
 		// -(void)logOutWithCompletionHandler:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completionHandler __attribute__((availability(watchos, introduced=6.2))) __attribute__((availability(tvos, introduced=13.0))) __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0)));
 		[Export("logOutWithCompletionHandler:")]
