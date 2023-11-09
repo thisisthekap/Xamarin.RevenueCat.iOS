@@ -1103,7 +1103,7 @@ namespace RevenueCat
 
 		// -(void)getCustomerInfoWithCompletion:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
 		[Export("getCustomerInfoWithCompletion:")]
-		void GetCustomerInfoWithCompletion(Action<RCCustomerInfo, NSError> completion);
+		void GetCustomerInfo(Action<RCCustomerInfo, NSError> completion);
 
 		// -(void)getCustomerInfoWithFetchPolicy:(enum RCCacheFetchPolicy)fetchPolicy completion:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
 		[Export("getCustomerInfoWithFetchPolicy:completion:")]
