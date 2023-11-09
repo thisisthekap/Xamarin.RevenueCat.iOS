@@ -1,5 +1,4 @@
 using ObjCRuntime;
-// ReSharper disable InconsistentNaming
 
 namespace RevenueCat
 {
@@ -13,6 +12,7 @@ namespace RevenueCat
         Tenjin = 4,
         Facebook = 5,
         MParticle = 6,
+        AdServices = 7,
     }
 
     [Native]
@@ -22,6 +22,14 @@ namespace RevenueCat
         FetchCurrent = 1,
         NotStaleCachedOrFetched = 2,
         CachedOrFetched = 3,
+    }
+
+    [Native]
+    public enum RCEntitlementVerificationMode : long
+    {
+        Disabled = 0,
+        Informational = 1,
+        Enforced = 2,
     }
 
     [Native]
@@ -62,6 +70,8 @@ namespace RevenueCat
         APIEndpointBlocked = 33,
         InvalidPromotionalOfferError = 34,
         OfflineConnectionError = 35,
+        FeatureNotAvailableInCustomEntitlementsComputationMode = 36,
+        SignatureVerificationFailed = 37,
     }
 
     [Native]
@@ -85,6 +95,7 @@ namespace RevenueCat
     [Native]
     public enum RCLogLevel : long
     {
+        Verbose = 4,
         Debug = 0,
         Info = 1,
         Warn = 2,
@@ -142,6 +153,14 @@ namespace RevenueCat
     }
 
     [Native]
+    public enum RCStoreMessageType : long
+    {
+        BillingIssue = 0,
+        PriceIncreaseConsent = 1,
+        Generic = 2,
+    }
+
+    [Native]
     public enum RCStoreProductCategory : long
     {
         Subscription = 0,
@@ -179,5 +198,14 @@ namespace RevenueCat
         Week = 1,
         Month = 2,
         Year = 3,
+    }
+
+    [Native]
+    public enum RCVerificationResult : long
+    {
+        NotRequested = 0,
+        Verified = 1,
+        VerifiedOnDevice = 3,
+        Failed = 2,
     }
 }

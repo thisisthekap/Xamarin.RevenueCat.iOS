@@ -33,7 +33,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.LogOutWithCompletion((customerInfo, error) =>
+            purchases.LogOut((customerInfo, error) =>
             {
                 if (error != null)
                 {
@@ -52,7 +52,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCOfferings>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.GetOfferingsWithCompletion((RCOfferings offerings, NSError error) =>
+            purchases.GetOfferings((RCOfferings offerings, NSError error) =>
             {
                 if (error != null)
                 {
@@ -95,7 +95,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.RestorePurchasesWithCompletion((RCCustomerInfo customerInfo, NSError error) =>
+            purchases.RestorePurchases((RCCustomerInfo customerInfo, NSError error) =>
             {
                 if (error != null)
                 {
@@ -121,7 +121,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.GetCustomerInfoWithCompletion((RCCustomerInfo customerInfo, NSError error) =>
+            purchases.GetCustomerInfo((RCCustomerInfo customerInfo, NSError error) =>
             {
                 if (error != null)
                 {
