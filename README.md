@@ -2,6 +2,10 @@
 
 Xamarin.iOS Bindings for RevenueCat ([Website](https://www.revenuecat.com/), [Setup Instructions](https://docs.revenuecat.com/docs/ios)).
 
+> [!WARNING]
+> This is only can be used for ios 15 and up.
+
+
 ## About this Repository
 
 This repository is not going to support newer versions of the RevenueCat SDK. For newer versions of the SDK, and support for .NET 7 iOS (MAUI), please see https://github.com/thisisthekap/Tonestro.Maui.RevenueCat.iOS.
@@ -51,5 +55,5 @@ The repository with the sample code is available [here](https://github.com/BillF
 
 ## License
 
-The license for this repository is specified in 
+The license for this repository is specified in
 [LICENSE.txt](LICENSE.txt)
