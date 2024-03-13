@@ -120,6 +120,7 @@ extension RevenueCat.Offerings {
   @objc override final public var description: Swift.String {
     @objc get
   }
+  @objc(currentOfferingForPlacement:) final public func currentOffering(forPlacement placementIdentifier: Swift.String) -> RevenueCat.Offering?
 }
 extension RevenueCat.Purchases {
   @available(iOS 15.0, *)
@@ -746,7 +747,10 @@ extension RevenueCat.PaywallData {
   public struct Configuration {
     public var packages: [Swift.String]
     public var defaultPackage: Swift.String?
-    public var images: RevenueCat.PaywallData.Configuration.Images
+    public var images: RevenueCat.PaywallData.Configuration.Images {
+      get
+      set
+    }
     public var blurredBackgroundImage: Swift.Bool {
       get
       set
@@ -805,7 +809,7 @@ extension RevenueCat.PaywallData.Configuration {
   }
 }
 extension RevenueCat.PaywallData {
-  public init(templateName: Swift.String, config: RevenueCat.PaywallData.Configuration, localization: RevenueCat.PaywallData.LocalizedConfiguration, assetBaseURL: Foundation.URL, revision: Swift.Int = 0)
+  public init(templateName: Swift.String, config: RevenueCat.PaywallData.Configuration, localization: RevenueCat.PaywallData.LocalizedConfiguration, assetBaseURL: Foundation.URL, revision: Swift.Int = 0, locale: Foundation.Locale = .current)
 }
 extension RevenueCat.PaywallData.LocalizedConfiguration.Feature : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
@@ -929,6 +933,7 @@ extension RevenueCat.PurchasesDiagnostics.Error : Foundation.CustomNSError {
   @objc final public let productIdentifier: Swift.String
   @objc final public let purchaseDate: Foundation.Date
   @objc final public let transactionIdentifier: Swift.String
+  @objc final public let storeTransactionIdentifier: Swift.String
   @objc override final public var description: Swift.String {
     @objc get
   }
@@ -1293,6 +1298,12 @@ extension RevenueCat.CustomerInfo : Swift.Codable {
   convenience public init(from decoder: any Swift.Decoder) throws
   final public func encode(to encoder: any Swift.Encoder) throws
 }
+extension RevenueCat.CustomerInfo : Swift.Identifiable {
+  final public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+}
 extension RevenueCat.AppleReceipt {
   public struct InAppPurchase : Swift.Equatable {
     public let quantity: Swift.Int
@@ -1642,10 +1653,12 @@ extension RevenueCat.Purchases {
   }
 }
 extension RevenueCat.Purchases {
+  @available(*, deprecated, message: "The appUserID passed to logIn is a constant string known at compile time.\nThis is likely a programmer error. This ID is used to identify the current user.\nSee https://docs.revenuecat.com/docs/user-ids for more information.")
   final public func logIn(_ appUserID: Swift.StaticString, completion: @escaping (RevenueCat.CustomerInfo?, Swift.Bool, RevenueCat.PublicError?) -> Swift.Void)
   @_disfavoredOverload @objc(logIn:completion:) final public func logIn(_ appUserID: Swift.String, completion: @escaping (RevenueCat.CustomerInfo?, Swift.Bool, RevenueCat.PublicError?) -> Swift.Void)
   #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.2, *)
+  @available(*, deprecated, message: "The appUserID passed to logIn is a constant string known at compile time.\nThis is likely a programmer error. This ID is used to identify the current user.\nSee https://docs.revenuecat.com/docs/user-ids for more information.")
   final public func logIn(_ appUserID: Swift.StaticString) async throws -> (customerInfo: RevenueCat.CustomerInfo, created: Swift.Bool)
   #endif
   #if compiler(>=5.3) && $AsyncAwait
@@ -1657,6 +1670,7 @@ extension RevenueCat.Purchases {
   @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.2, *)
   @objc final public func logOut() async throws -> RevenueCat.CustomerInfo
   #endif
+  @objc final public func syncAttributesAndOfferingsIfNeeded(completion: @escaping (RevenueCat.Offerings?, RevenueCat.PublicError?) -> Swift.Void)
 }
 extension RevenueCat.Purchases {
   @objc final public func getCustomerInfo(completion: @escaping (RevenueCat.CustomerInfo?, RevenueCat.PublicError?) -> Swift.Void)
@@ -1798,6 +1812,8 @@ extension RevenueCat.Purchases {
   #if compiler(>=5.3) && $AsyncAwait
   final public func track(paywallEvent: RevenueCat.PaywallEvent) async
   #endif
+  @available(iOS 15.0, macOS 12.0, watchOS 8.0, tvOS 15.0, *)
+  public static let paywallImageDownloadSession: Foundation.URLSession
 }
 extension RevenueCat.Purchases {
   @discardableResult
@@ -1807,9 +1823,15 @@ extension RevenueCat.Purchases {
   @discardableResult
   @objc(configureWithAPIKey:) public static func configure(withAPIKey apiKey: Swift.String) -> RevenueCat.Purchases
   @discardableResult
-  @objc(configureWithAPIKey:appUserID:) public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.String?) -> RevenueCat.Purchases
+  @_disfavoredOverload @objc(configureWithAPIKey:appUserID:) public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.String?) -> RevenueCat.Purchases
+  @available(*, deprecated, message: "The appUserID passed to logIn is a constant string known at compile time.\nThis is likely a programmer error. This ID is used to identify the current user.\nSee https://docs.revenuecat.com/docs/user-ids for more information.")
   @discardableResult
-  @objc(configureWithAPIKey:appUserID:observerMode:) public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.String?, observerMode: Swift.Bool) -> RevenueCat.Purchases
+  public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.StaticString) -> RevenueCat.Purchases
+  @discardableResult
+  @_disfavoredOverload @objc(configureWithAPIKey:appUserID:observerMode:) public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.String?, observerMode: Swift.Bool) -> RevenueCat.Purchases
+  @available(*, deprecated, message: "The appUserID passed to logIn is a constant string known at compile time.\nThis is likely a programmer error. This ID is used to identify the current user.\nSee https://docs.revenuecat.com/docs/user-ids for more information.")
+  @discardableResult
+  public static func configure(withAPIKey apiKey: Swift.String, appUserID: Swift.StaticString, observerMode: Swift.Bool) -> RevenueCat.Purchases
 }
 extension RevenueCat.Purchases {
   @available(*, deprecated, message: "use Purchases.logLevel instead")
@@ -1900,6 +1922,9 @@ public struct TestStoreProduct {
   public var localizedTitle: Swift.String
   public var price: Foundation.Decimal
   public var localizedPriceString: Swift.String
+  public var localizedPricePerWeek: Swift.String?
+  public var localizedPricePerMonth: Swift.String?
+  public var localizedPricePerYear: Swift.String?
   public var productIdentifier: Swift.String
   public var productType: RevenueCat.StoreProduct.ProductType
   public var localizedDescription: Swift.String
@@ -1935,6 +1960,7 @@ extension RevenueCat.PurchasesReceiptParser {
   @objc public static let `default`: RevenueCat.PurchasesReceiptParser
 }
 public struct AppleReceipt : Swift.Equatable {
+  public let environment: RevenueCat.AppleReceipt.Environment
   public let bundleId: Swift.String
   public let applicationVersion: Swift.String
   public let originalApplicationVersion: Swift.String?
@@ -1945,11 +1971,28 @@ public struct AppleReceipt : Swift.Equatable {
   public let inAppPurchases: [RevenueCat.AppleReceipt.InAppPurchase]
   public static func == (a: RevenueCat.AppleReceipt, b: RevenueCat.AppleReceipt) -> Swift.Bool
 }
+extension RevenueCat.AppleReceipt {
+  public enum Environment : Swift.String {
+    case production
+    case sandbox
+    case xcode
+    case unknown
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
 extension RevenueCat.AppleReceipt : Swift.Sendable {
+}
+extension RevenueCat.AppleReceipt.Environment : Swift.Sendable {
 }
 extension RevenueCat.AppleReceipt : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
+}
+extension RevenueCat.AppleReceipt.Environment : Swift.Codable {
 }
 extension RevenueCat.AppleReceipt : Swift.CustomDebugStringConvertible {
   public var debugDescription: Swift.String {
@@ -2004,18 +2047,37 @@ extension RevenueCat.EntitlementInfos : Swift.Sendable {
     get
   }
 }
+@objc(RCPresentedOfferingContext) final public class PresentedOfferingContext : ObjectiveC.NSObject {
+  @objc(RCTargetingContext) final public class TargetingContext : ObjectiveC.NSObject {
+    @objc final public let revision: Swift.Int
+    @objc final public let ruleId: Swift.String
+    @objc public init(revision: Swift.Int, ruleId: Swift.String)
+    @objc deinit
+  }
+  @objc final public let offeringIdentifier: Swift.String
+  @objc final public let placementIdentifier: Swift.String?
+  @objc final public let targetingContext: RevenueCat.PresentedOfferingContext.TargetingContext?
+  @objc public init(offeringIdentifier: Swift.String, placementIdentifier: Swift.String?, targetingContext: RevenueCat.PresentedOfferingContext.TargetingContext?)
+  @objc convenience public init(offeringIdentifier: Swift.String)
+  @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override final public var hash: Swift.Int {
+    @objc get
+  }
+  @objc deinit
+}
 @objc(RCPackage) final public class Package : ObjectiveC.NSObject {
   @objc final public let identifier: Swift.String
   @objc final public let packageType: RevenueCat.PackageType
   @objc final public let storeProduct: RevenueCat.StoreProduct
-  @objc final public let offeringIdentifier: Swift.String
+  @objc final public let presentedOfferingContext: RevenueCat.PresentedOfferingContext
   @objc final public var localizedPriceString: Swift.String {
     @objc get
   }
   @objc final public var localizedIntroductoryPriceString: Swift.String? {
     @objc get
   }
-  @objc public init(identifier: Swift.String, packageType: RevenueCat.PackageType, storeProduct: RevenueCat.StoreProduct, offeringIdentifier: Swift.String)
+  @objc convenience public init(identifier: Swift.String, packageType: RevenueCat.PackageType, storeProduct: RevenueCat.StoreProduct, offeringIdentifier: Swift.String)
+  @objc public init(identifier: Swift.String, packageType: RevenueCat.PackageType, storeProduct: RevenueCat.StoreProduct, presentedOfferingContext: RevenueCat.PresentedOfferingContext)
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
   @objc override final public var hash: Swift.Int {
     @objc get
@@ -2025,6 +2087,9 @@ extension RevenueCat.EntitlementInfos : Swift.Sendable {
 @objc extension RevenueCat.Package {
   @objc public static func string(from packageType: RevenueCat.PackageType) -> Swift.String?
   @objc public static func packageType(from string: Swift.String) -> RevenueCat.PackageType
+  @objc final public var offeringIdentifier: Swift.String {
+    @objc get
+  }
 }
 extension RevenueCat.Package : Swift.Identifiable {
   final public var id: Swift.String {
@@ -2034,12 +2099,17 @@ extension RevenueCat.Package : Swift.Identifiable {
 }
 extension RevenueCat.Package : Swift.Sendable {
 }
+extension RevenueCat.PresentedOfferingContext : Swift.Sendable {
+}
+extension RevenueCat.PresentedOfferingContext.TargetingContext : Swift.Sendable {
+}
 @_hasMissingDesignatedInitializers @objc(RCConfiguration) final public class Configuration : ObjectiveC.NSObject {
   @objc public static func builder(withAPIKey apiKey: Swift.String) -> RevenueCat.Configuration.Builder
   @objc(RCConfigurationBuilder) public class Builder : ObjectiveC.NSObject {
     @objc public init(withAPIKey apiKey: Swift.String)
     @objc public func with(apiKey: Swift.String) -> RevenueCat.Configuration.Builder
     @_disfavoredOverload @objc public func with(appUserID: Swift.String?) -> RevenueCat.Configuration.Builder
+    @available(*, deprecated, message: "The appUserID passed to logIn is a constant string known at compile time.\nThis is likely a programmer error. This ID is used to identify the current user.\nSee https://docs.revenuecat.com/docs/user-ids for more information.")
     public func with(appUserID: Swift.StaticString) -> RevenueCat.Configuration.Builder
     @objc public func with(observerMode: Swift.Bool) -> RevenueCat.Configuration.Builder
     @objc public func with(userDefaults: Foundation.UserDefaults) -> RevenueCat.Configuration.Builder
@@ -2070,7 +2140,9 @@ extension RevenueCat.Configuration {
 }
 public enum PaywallViewMode {
   case fullScreen
+  @available(watchOS, unavailable)
   case footer
+  @available(watchOS, unavailable)
   case condensedFooter
   public static let `default`: RevenueCat.PaywallViewMode
   public static func == (a: RevenueCat.PaywallViewMode, b: RevenueCat.PaywallViewMode) -> Swift.Bool
@@ -2081,10 +2153,10 @@ extension RevenueCat.PaywallViewMode {
   }
 }
 extension RevenueCat.PaywallViewMode : Swift.CaseIterable {
-  public typealias AllCases = [RevenueCat.PaywallViewMode]
   public static var allCases: [RevenueCat.PaywallViewMode] {
     get
   }
+  public typealias AllCases = [RevenueCat.PaywallViewMode]
 }
 extension RevenueCat.PaywallViewMode : Swift.Sendable {
 }
@@ -2506,6 +2578,7 @@ public typealias PublicError = Foundation.NSError
   func showManageSubscriptions() async throws
   #endif
   @objc var attribution: RevenueCat.Attribution { get }
+  @objc func syncAttributesAndOfferingsIfNeeded(completion: @escaping (RevenueCat.Offerings?, RevenueCat.PublicError?) -> Swift.Void)
   @objc func setAttributes(_ attributes: [Swift.String : Swift.String])
   @objc @available(*, deprecated)
   var allowSharingAppStoreAccount: Swift.Bool { get set }
@@ -2652,6 +2725,18 @@ extension RevenueCat.StoreProduct {
   @objc final public var localizedIntroductoryPriceString: Swift.String? {
     @objc get
   }
+  @available(iOS 11.2, macOS 10.13.2, tvOS 11.2, watchOS 6.2, *)
+  @objc final public var localizedPricePerWeek: Swift.String? {
+    @objc get
+  }
+  @available(iOS 11.2, macOS 10.13.2, tvOS 11.2, watchOS 6.2, *)
+  @objc final public var localizedPricePerMonth: Swift.String? {
+    @objc get
+  }
+  @available(iOS 11.2, macOS 10.13.2, tvOS 11.2, watchOS 6.2, *)
+  @objc final public var localizedPricePerYear: Swift.String? {
+    @objc get
+  }
 }
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.2, *)
 extension RevenueCat.StoreProduct {
@@ -2729,6 +2814,9 @@ extension RevenueCat.PurchaseOwnershipType : Swift.Equatable {}
 extension RevenueCat.PurchaseOwnershipType : Swift.Hashable {}
 extension RevenueCat.PurchaseOwnershipType : Swift.RawRepresentable {}
 extension RevenueCat.TestStoreProduct : Swift.Sendable {}
+extension RevenueCat.AppleReceipt.Environment : Swift.Equatable {}
+extension RevenueCat.AppleReceipt.Environment : Swift.Hashable {}
+extension RevenueCat.AppleReceipt.Environment : Swift.RawRepresentable {}
 extension RevenueCat.StoreMessageType : Swift.Equatable {}
 extension RevenueCat.StoreMessageType : Swift.Hashable {}
 extension RevenueCat.StoreMessageType : Swift.RawRepresentable {}

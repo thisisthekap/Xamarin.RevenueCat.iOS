@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Foundation;
 using RevenueCat;
 
 namespace Xamarin.RevenueCat.iOS.Extensions
@@ -14,7 +13,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<LoginResult>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.LogIn(appUserId, (customerInfo, created, error) =>
+            purchases.LogInWithCompletion(appUserId, (customerInfo, created, error) =>
             {
                 if (error != null)
                 {
@@ -33,7 +32,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.LogOut((customerInfo, error) =>
+            purchases.LogOutWithCompletion((customerInfo, error) =>
             {
                 if (error != null)
                 {
@@ -52,7 +51,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCOfferings>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.GetOfferings((RCOfferings offerings, NSError error) =>
+            purchases.GetOfferingsWithCompletion((offerings, error) =>
             {
                 if (error != null)
                 {
@@ -72,7 +71,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
             var tcs = new TaskCompletionSource<PurchaseSuccessInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
             purchases.PurchasePackage(packageToPurchase,
-                (RCStoreTransaction transaction, RCCustomerInfo customerInfo, NSError error, bool userCancelled) =>
+                (transaction, customerInfo, error, userCancelled) =>
                 {
                     if (error != null)
                     {
@@ -95,7 +94,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.RestorePurchases((RCCustomerInfo customerInfo, NSError error) =>
+            purchases.RestorePurchasesWithCompletion((customerInfo, error) =>
             {
                 if (error != null)
                 {
@@ -121,7 +120,7 @@ namespace Xamarin.RevenueCat.iOS.Extensions
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
-            purchases.GetCustomerInfo((RCCustomerInfo customerInfo, NSError error) =>
+            purchases.GetCustomerInfoWithCompletion((customerInfo, error) =>
             {
                 if (error != null)
                 {
