@@ -360,3 +360,7 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
 
 .DS_Store
+
+Xamarin.RevenueCatUI.iOS/ios/build/
+
+Xamarin.RevenueCatUI.iOS/Output/
