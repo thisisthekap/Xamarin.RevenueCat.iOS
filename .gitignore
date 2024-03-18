@@ -361,6 +361,4 @@ MigrationBackup/
 
 .DS_Store
 
-Xamarin.RevenueCatUI.iOS/ios/build/
-
 Xamarin.RevenueCatUI.iOS/Output/
