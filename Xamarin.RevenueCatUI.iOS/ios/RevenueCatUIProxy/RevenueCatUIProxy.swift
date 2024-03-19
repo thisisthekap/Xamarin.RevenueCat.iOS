@@ -12,6 +12,10 @@ import RevenueCat
 
 @objc(RevenueCatUIProxy)
  public class RevenueCatUIProxy: NSObject {
+     
+     @objc public static func FancyString()->String{
+         return String(describing: PaywallViewController.self)
+     }
         
      @objc public static func presentPaywall(from topVC: UIViewController,
                                                didFinishPurchasing: @escaping (CustomerInfo) -> Void) {

@@ -57,15 +57,13 @@
         <ObjcBindingCoreSource Include="Structs.cs" />
     </ItemGroup>
     <ItemGroup>
-        <NativeReference Include="Output\RevenueCatUIProxy.xcframework">
+        <NativeReference Include="Output\RevenueCatUIProxy.framework">
             <Kind>Framework</Kind>
-<!--            <Frameworks>Foundation UIKit RevenueCat</Frameworks>-->
-            <SmartLink>True</SmartLink>
+            <SmartLink>False</SmartLink>
             <ForceLoad>True</ForceLoad>
-<!--            <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>-->
-<!--            <IsCxx>False</IsCxx>-->
+            <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>
+            <IsCxx>False</IsCxx>
         </NativeReference>
-        
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Xamarin.RevenueCat.iOS\Xamarin.RevenueCat.iOS.csproj">
