@@ -2,7 +2,6 @@ using System;
 using Foundation;
 using RevenueCat;
 using UIKit;
-using Xamarin.RevenueCatUI.iOS;
 
 namespace Xamarin.RevenueCat.iOS.UsageChecker
 {
@@ -11,9 +10,7 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
     [Register("AppDelegate")]
     public class AppDelegate : UIResponder, IUIApplicationDelegate
     {
-
-        [Export("window")]
-        public UIWindow Window { get; set; }
+        [Export("window")] public UIWindow Window { get; set; }
 
         [Export("application:didFinishLaunchingWithOptions:")]
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -28,7 +25,8 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
         // UISceneSession Lifecycle
 
         [Export("application:configurationForConnectingSceneSession:options:")]
-        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession, UISceneConnectionOptions options)
+        public UISceneConfiguration GetConfiguration(UIApplication application, UISceneSession connectingSceneSession,
+            UISceneConnectionOptions options)
         {
             // Called when a new scene session is being created.
             // Use this method to select a configuration to create the new scene with.
@@ -44,4 +42,3 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
         }
     }
 }
-

@@ -59,7 +59,7 @@
     <ItemGroup>
         <NativeReference Include="Output\RevenueCatUI.framework">
             <Kind>Framework</Kind>
-            <Framework>StoreKit SwiftUI</Framework>
+            <Framework>Foundation StoreKit SwiftUI</Framework>
             <SmartLink>False</SmartLink>
             <ForceLoad>True</ForceLoad>
             <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>
@@ -77,7 +77,6 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Xamarin.iOS.SwiftRuntimeSupport" Version="0.2.1" />
     </ItemGroup>
     <Target Name="StripBitcode" AfterTargets="Build">
         <Message Text="Stripping Bitcode..." Importance="high" />

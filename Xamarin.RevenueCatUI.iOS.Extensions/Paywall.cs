@@ -8,11 +8,11 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
 {
     public static class Paywall
     {
-        public static Task<RCCustomerInfo> PresentPaywallAsync(UIViewController topVc, RCOffering offering,
+        public static Task<RCCustomerInfo> PresentPaywallAsync(this UIViewController topVc, RCOffering offering,
             CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
-            var controller = new RCPaywallViewController(offering, true, viewController => { });
+            var controller = new RCPaywallViewController(offering, true, null);
             var paywallDelegate = new DelegatedPaywallViewControllerDelegate(customerInfo =>
             {
                 if (cancellationToken.IsCancellationRequested)
@@ -44,7 +44,6 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
             public override void PaywallViewControllerDidFinishRestoringWithCustomerInfo(
                 RCPaywallViewController controller, RCCustomerInfo customerInfo)
             {
-                base.PaywallViewControllerDidFinishRestoringWithCustomerInfo(controller, customerInfo);
                 _callback?.Invoke(customerInfo);
             }
         }

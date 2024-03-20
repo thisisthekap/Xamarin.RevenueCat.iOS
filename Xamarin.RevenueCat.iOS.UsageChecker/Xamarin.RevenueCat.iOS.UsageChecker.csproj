@@ -144,14 +144,6 @@
         <Project>{EAA9C04E-CFAD-49D2-A3A8-168A811D79DA}</Project>
         <Name>Xamarin.RevenueCat.iOS</Name>
       </ProjectReference>
-      <ProjectReference Include="..\Xamarin.RevenueCatUI.iOS.Extensions\Xamarin.RevenueCatUI.iOS.Extensions.csproj">
-        <Project>{8a4c42eb-9f33-47da-826d-fa32a801f18a}</Project>
-        <Name>Xamarin.RevenueCatUI.iOS.Extensions</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\Xamarin.RevenueCatUI.iOS\Xamarin.RevenueCatUI.iOS.csproj">
-        <Project>{d7fbdd5a-a376-4096-b6d9-06fcd7d6872b}</Project>
-        <Name>Xamarin.RevenueCatUI.iOS</Name>
-      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

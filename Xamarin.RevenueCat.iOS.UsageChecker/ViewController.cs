@@ -1,7 +1,6 @@
 using System;
 using UIKit;
 using Xamarin.RevenueCat.iOS.Extensions;
-using Xamarin.RevenueCatUI.iOS.Extensions;
 
 namespace Xamarin.RevenueCat.iOS.UsageChecker
 {
@@ -13,11 +12,9 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
             Console.WriteLine(userCancelledException);
         }
 
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var result = await Paywall.PresentPaywallAsync(this, null);
-            Console.WriteLine(result);
         }
     }
 }

@@ -362,5 +362,3 @@ MigrationBackup/
 .DS_Store
 
 Xamarin.RevenueCatUI.iOS/Output/
-
-Xamarin.RevenueCatUI.iOS/ios/Pods/
