@@ -8,15 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		50AA97022BA3FD2100F2C9A4 /* RevenueCatUIProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 50AA97012BA3FD2100F2C9A4 /* RevenueCatUIProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50AA970C2BA3FDD600F2C9A4 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 50AA970B2BA3FDD600F2C9A4 /* RevenueCatUI */; };
 		50AA970E2BA4017500F2C9A4 /* RevenueCatUIProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA970D2BA4017500F2C9A4 /* RevenueCatUIProxy.swift */; };
-		50AA97112BA40C7900F2C9A4 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 50AA97102BA40C7900F2C9A4 /* RevenueCat */; };
+		50D5A53D2BAADEF00012B045 /* Pods_RevenueCatUIProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88356AA330D8C812A70275F /* Pods_RevenueCatUIProxy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50189C2A2BAADDEE00A19A2E /* RevenueCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevenueCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50189C2B2BAADDEE00A19A2E /* RevenueCatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevenueCatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50AA96FE2BA3FD2100F2C9A4 /* RevenueCatUIProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RevenueCatUIProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50AA97012BA3FD2100F2C9A4 /* RevenueCatUIProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RevenueCatUIProxy.h; sourceTree = "<group>"; };
 		50AA970D2BA4017500F2C9A4 /* RevenueCatUIProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatUIProxy.swift; sourceTree = "<group>"; };
+		50D5A54C2BAAEA840012B045 /* RevenueCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevenueCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D5A54D2BAAEA840012B045 /* RevenueCatUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RevenueCatUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		892A131944CD85C626A2317E /* Pods-RevenueCatUIProxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatUIProxy.release.xcconfig"; path = "Target Support Files/Pods-RevenueCatUIProxy/Pods-RevenueCatUIProxy.release.xcconfig"; sourceTree = "<group>"; };
+		B0F096D6D8D58B9043B80BA1 /* Pods-RevenueCatUIProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevenueCatUIProxy.debug.xcconfig"; path = "Target Support Files/Pods-RevenueCatUIProxy/Pods-RevenueCatUIProxy.debug.xcconfig"; sourceTree = "<group>"; };
+		B88356AA330D8C812A70275F /* Pods_RevenueCatUIProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevenueCatUIProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,8 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50AA97112BA40C7900F2C9A4 /* RevenueCat in Frameworks */,
-				50AA970C2BA3FDD600F2C9A4 /* RevenueCatUI in Frameworks */,
+				50D5A53D2BAADEF00012B045 /* Pods_RevenueCatUIProxy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,7 +42,9 @@
 			children = (
 				50AA97002BA3FD2100F2C9A4 /* RevenueCatUIProxy */,
 				50AA96FF2BA3FD2100F2C9A4 /* Products */,
-				50AA970F2BA40C7900F2C9A4 /* Frameworks */,
+				9A03E578B83489F749F75912 /* Pods */,
+				50BD62D92BAAC81700F9BD01 /* Recovered References */,
+				91768CC0A87AAAB3B6C3589D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,11 +65,32 @@
 			path = RevenueCatUIProxy;
 			sourceTree = "<group>";
 		};
-		50AA970F2BA40C7900F2C9A4 /* Frameworks */ = {
+		50BD62D92BAAC81700F9BD01 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		91768CC0A87AAAB3B6C3589D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50D5A54C2BAAEA840012B045 /* RevenueCat.framework */,
+				50D5A54D2BAAEA840012B045 /* RevenueCatUI.framework */,
+				50189C2A2BAADDEE00A19A2E /* RevenueCat.framework */,
+				50189C2B2BAADDEE00A19A2E /* RevenueCatUI.framework */,
+				B88356AA330D8C812A70275F /* Pods_RevenueCatUIProxy.framework */,
+			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A03E578B83489F749F75912 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0F096D6D8D58B9043B80BA1 /* Pods-RevenueCatUIProxy.debug.xcconfig */,
+				892A131944CD85C626A2317E /* Pods-RevenueCatUIProxy.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50AA97052BA3FD2100F2C9A4 /* Build configuration list for PBXNativeTarget "RevenueCatUIProxy" */;
 			buildPhases = (
+				8E3E7E09235579537A257191 /* [CP] Check Pods Manifest.lock */,
 				50AA96F92BA3FD2100F2C9A4 /* Headers */,
 				50AA96FA2BA3FD2100F2C9A4 /* Sources */,
 				50AA96FB2BA3FD2100F2C9A4 /* Frameworks */,
@@ -93,10 +122,6 @@
 			dependencies = (
 			);
 			name = RevenueCatUIProxy;
-			packageProductDependencies = (
-				50AA970B2BA3FDD600F2C9A4 /* RevenueCatUI */,
-				50AA97102BA40C7900F2C9A4 /* RevenueCat */,
-			);
 			productName = RevenueCatUIProxy;
 			productReference = 50AA96FE2BA3FD2100F2C9A4 /* RevenueCatUIProxy.framework */;
 			productType = "com.apple.product-type.framework";
@@ -125,9 +150,6 @@
 				Base,
 			);
 			mainGroup = 50AA96F42BA3FD2100F2C9A4;
-			packageReferences = (
-				50AA97082BA3FDD600F2C9A4 /* XCRemoteSwiftPackageReference "purchases-ios" */,
-			);
 			productRefGroup = 50AA96FF2BA3FD2100F2C9A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,6 +168,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E3E7E09235579537A257191 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RevenueCatUIProxy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50AA96FA2BA3FD2100F2C9A4 /* Sources */ = {
@@ -212,11 +259,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -272,10 +320,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -286,9 +335,10 @@
 		};
 		50AA97062BA3FD2100F2C9A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0F096D6D8D58B9043B80BA1 /* Pods-RevenueCatUIProxy.debug.xcconfig */;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -310,7 +360,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonestro.RevenueCatUIProxy;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -329,9 +379,10 @@
 		};
 		50AA97072BA3FD2100F2C9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 892A131944CD85C626A2317E /* Pods-RevenueCatUIProxy.release.xcconfig */;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -353,7 +404,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonestro.RevenueCatUIProxy;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -391,30 +442,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		50AA97082BA3FDD600F2C9A4 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:RevenueCat/purchases-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.39.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		50AA970B2BA3FDD600F2C9A4 /* RevenueCatUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50AA97082BA3FDD600F2C9A4 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCatUI;
-		};
-		50AA97102BA40C7900F2C9A4 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50AA97082BA3FDD600F2C9A4 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50AA96F52BA3FD2100F2C9A4 /* Project object */;
 }

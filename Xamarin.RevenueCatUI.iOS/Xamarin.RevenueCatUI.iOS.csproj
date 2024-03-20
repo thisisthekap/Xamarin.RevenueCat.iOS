@@ -57,8 +57,9 @@
         <ObjcBindingCoreSource Include="Structs.cs" />
     </ItemGroup>
     <ItemGroup>
-        <NativeReference Include="Output\RevenueCatUIProxy.framework">
+        <NativeReference Include="Output\RevenueCatUI.framework">
             <Kind>Framework</Kind>
+            <Framework>StoreKit SwiftUI</Framework>
             <SmartLink>False</SmartLink>
             <ForceLoad>True</ForceLoad>
             <NeedsGccExceptionHandling>False</NeedsGccExceptionHandling>
@@ -66,10 +67,35 @@
         </NativeReference>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Xamarin.RevenueCat.iOS\Xamarin.RevenueCat.iOS.csproj">
-        <Project>{eaa9c04e-cfad-49d2-a3a8-168a811d79da}</Project>
-        <Name>Xamarin.RevenueCat.iOS</Name>
-      </ProjectReference>
+        <ProjectReference Include="..\Xamarin.RevenueCat.iOS\Xamarin.RevenueCat.iOS.csproj">
+            <Project>{eaa9c04e-cfad-49d2-a3a8-168a811d79da}</Project>
+            <Name>Xamarin.RevenueCat.iOS</Name>
+        </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.9.1">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Xamarin.iOS.SwiftRuntimeSupport" Version="0.2.1" />
+    </ItemGroup>
+    <Target Name="StripBitcode" AfterTargets="Build">
+        <Message Text="Stripping Bitcode..." Importance="high" />
+
+        <!-- Diagnostic messages to ensure paths and commands are correct -->
+        <Message Text="Framework Path: Output/RevenueCatUI.framework" Importance="high" />
+        <Exec Command="ls -l Output/RevenueCatUI.framework" />
+
+        <Message Text="Finding the bitcode_strip command..." Importance="high" />
+        <Exec Command="xcrun -find bitcode_strip" ConsoleToMSBuild="true">
+            <Output TaskParameter="ConsoleOutput" PropertyName="BitcodeStripCommand" />
+        </Exec>
+
+        <Message Text="Bitcode_strip command found: $(BitcodeStripCommand)" Importance="high" />
+        <Message Text="Stripping the bitcode from frameworks..." Importance="high" />
+
+        <Exec Command="$(BitcodeStripCommand) Output/RevenueCatUI.framework/RevenueCatUI -r -o Output/RevenueCatUI.framework/RevenueCatUI" />
+        <Message Text="Bitcode stripping complete." Importance="high" />
+    </Target>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

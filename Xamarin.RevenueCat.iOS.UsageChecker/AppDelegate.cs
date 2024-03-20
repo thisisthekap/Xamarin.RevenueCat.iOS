@@ -22,7 +22,6 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
             RCPurchases.ConfigureWithAPIKey("theapikey");
             Console.WriteLine($"Bound RevenueCat iOS SDK Version: {RCPurchases.FrameworkVersion}");
 
-            Console.WriteLine(RevenueCatUIProxy.FancyString);
             return true;
         }
 

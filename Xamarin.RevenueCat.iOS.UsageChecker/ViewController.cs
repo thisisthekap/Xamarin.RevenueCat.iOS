@@ -16,7 +16,7 @@ namespace Xamarin.RevenueCat.iOS.UsageChecker
         public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var result = await Paywall.PresentPaywallAsync(this);
+            var result = await Paywall.PresentPaywallAsync(this, null);
             Console.WriteLine(result);
         }
     }
