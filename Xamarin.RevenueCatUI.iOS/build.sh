@@ -6,8 +6,8 @@ SCHEME_NAME="RevenueCatUIProxy"
 BUILD_FLAG="SKIP_INSTALL=NO ENABLE_BITCODE=NO SWIFT_INSTALL_OBJC_HEADER=YES BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
 CONFIG="Release"
 
-xcodebuild archive -sdk "iphoneos$IOS_SDK_VERSION" -workspace "$WORKSPACE_PATH" -scheme "$SCHEME_NAME" -configuration "$CONFIG" -archivePath "Output/Output-iphoneos" "$BUILD_FLAG"
-xcodebuild archive -sdk "iphonesimulator$IOS_SDK_VERSION" -workspace "$WORKSPACE_PATH" -scheme "$SCHEME_NAME" -configuration "$CONFIG" -archivePath "Output/Output-iphonesimulator" "$BUILD_FLAG" EXCLUDED_ARCHS=arm64
+xcodebuild archive -sdk "iphoneos$IOS_SDK_VERSION" -workspace "$WORKSPACE_PATH" -scheme "$SCHEME_NAME" -configuration "$CONFIG" -archivePath "Output/Output-iphoneos" $BUILD_FLAG
+xcodebuild archive -sdk "iphonesimulator$IOS_SDK_VERSION" -workspace "$WORKSPACE_PATH" -scheme "$SCHEME_NAME" -configuration "$CONFIG" -archivePath "Output/Output-iphonesimulator" $BUILD_FLAG EXCLUDED_ARCHS=arm64
 
 cp -R "Output/Output-iphoneos.xcarchive/Products/Library/Frameworks/RevenueCatUI.framework/" "Output/RevenueCatUI.framework"
 cp -R "Output/Output-iphonesimulator.xcarchive/Products/Library/Frameworks/RevenueCatUI.framework/Modules/RevenueCatUI.swiftmodule/" "Output/RevenueCatUI.framework/Modules/RevenueCatUI.swiftmodule/"
