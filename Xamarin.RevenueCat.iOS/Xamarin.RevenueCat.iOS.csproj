@@ -3,9 +3,9 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCat.iOS</PackageId>
-        <Version>4.30.0.3</Version>
+        <Version>4.39.0.1</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
-        <Authors>Christian Kapplmüller, Albilaga</Authors>
+        <Authors>Christian Kapplmüller, Albilaga Linggra Pradana</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
         <PackageLicensePath>..\LICENSE.txt</PackageLicensePath>
@@ -58,7 +58,7 @@
         <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.2.1">
+        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.9.1">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
