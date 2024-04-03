@@ -26,6 +26,12 @@ steps:
     fi
 
 - bash: |
+    XAMARIN_IOS_VERSION=16.4.0.23
+    wget "https://www.dropbox.com/scl/fi/qxq7hi939df7p53fod9cd/xamarin.ios-16.4.0.23.pkg?rlkey=vyxroa420oahcdqu9eshargjh&dl=0" -O xamarin.ios-${XAMARIN_IOS_VERSION}.pkg
+    sudo installer -pkg xamarin.ios-${XAMARIN_IOS_VERSION}.pkg -target /
+  displayName: "install xamarin-ios"
+
+- bash: |
     cd Xamarin.RevenueCat.iOS.Extensions
     msbuild /t:Restore /p:Configuration=Release
     msbuild /t:Build /p:Configuration=Release
