@@ -12,23 +12,34 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
             CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
+            cancellationToken.Register(() => tcs.TrySetCanceled());
             var controller = new RCPaywallViewController(offering, true, null);
             var paywallDelegate = new DelegatedPaywallViewControllerDelegate(customerInfo =>
             {
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    tcs.SetCanceled();
-                }
-                else
-                {
-                    tcs.SetResult(customerInfo);
-                }
+                tcs.SetResult(customerInfo);
             });
 
             controller.Delegate = paywallDelegate;
 
             topVc.InvokeOnMainThread(() => { topVc.PresentViewController(controller, true, null); });
+            return tcs.Task;
+        }
 
+        public static Task<RCCustomerInfo> PushPaywallAsync(this UINavigationController navigationController,
+            RCOffering offering, CancellationToken cancellationToken = default)
+        {
+            var tcs = new TaskCompletionSource<RCCustomerInfo>();
+            cancellationToken.Register(() => tcs.TrySetCanceled());
+            var controller = new RCPaywallViewController(offering, true, null);
+            var paywallDelegate = new DelegatedPaywallViewControllerDelegate(customerInfo =>
+            {
+                tcs.SetResult(customerInfo);
+            });
+
+            controller.Delegate = paywallDelegate;
+
+            navigationController.InvokeOnMainThread(
+                () => { navigationController.PushViewController(controller, true); });
             return tcs.Task;
         }
 

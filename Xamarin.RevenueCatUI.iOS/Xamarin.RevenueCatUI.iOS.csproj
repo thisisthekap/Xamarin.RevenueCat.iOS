@@ -5,7 +5,7 @@
         <PackageId>Xamarin.RevenueCatUI.iOS</PackageId>
         <Version>4.39.0.1</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
-        <Authors>Christian Kapplmüller, Albilaga</Authors>
+        <Authors>Christian Kapplmüller, Albilaga Linggra Pradana</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
         <PackageLicensePath>..\LICENSE.txt</PackageLicensePath>
@@ -52,9 +52,6 @@
     </ItemGroup>
     <ItemGroup>
         <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <ObjcBindingCoreSource Include="Structs.cs" />
     </ItemGroup>
     <ItemGroup>
         <NativeReference Include="Output\RevenueCatUI.framework">

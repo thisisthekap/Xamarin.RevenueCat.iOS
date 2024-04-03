@@ -854,7 +854,7 @@ namespace RevenueCat
         // @required -(void)syncPurchasesWithCompletion:(void (^ _Nullable)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
         [Abstract]
         [Export("syncPurchasesWithCompletion:")]
-        void SyncPurchasesWithCompletion([NullAllowed] Action<RCCustomerInfo, NSError> completion);
+        void SyncPurchases([NullAllowed] Action<RCCustomerInfo, NSError> completion);
 
         // @required -(void)syncPurchasesWithCompletionHandler:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completionHandler __attribute__((availability(watchos, introduced=6.2))) __attribute__((availability(tvos, introduced=13.0))) __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0)));
         [Abstract]
@@ -941,7 +941,7 @@ namespace RevenueCat
         // @required -(void)beginRefundRequestForActiveEntitlementWithCompletion:(void (^ _Nonnull)(enum RCRefundRequestStatus, NSError * _Nullable))completionHandler __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable))) __attribute__((availability(macos, unavailable))) __attribute__((availability(ios, introduced=15.0)));
         [Abstract]
         [Export("beginRefundRequestForActiveEntitlementWithCompletion:")]
-        void BeginRefundRequestForActiveEntitlementWithCompletion(
+        void BeginRefundRequestForActiveEntitlement(
             Action<RCRefundRequestStatus, NSError> completionHandler);
 
         // @required -(void)presentCodeRedemptionSheet __attribute__((availability(maccatalyst, unavailable))) __attribute__((availability(macos, unavailable))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable))) __attribute__((availability(ios, introduced=14.0)));
@@ -957,7 +957,7 @@ namespace RevenueCat
         // @required -(void)showManageSubscriptionsWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completion __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable)));
         [Abstract]
         [Export("showManageSubscriptionsWithCompletion:")]
-        void ShowManageSubscriptionsWithCompletion(Action<NSError> completion);
+        void ShowManageSubscriptions(Action<NSError> completion);
 
         // @required -(void)showManageSubscriptionsWithCompletionHandler:(void (^ _Nonnull)(NSError * _Nullable))completionHandler __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable)));
         [Abstract]
@@ -972,7 +972,7 @@ namespace RevenueCat
         // @required -(void)syncAttributesAndOfferingsIfNeededWithCompletion:(void (^ _Nonnull)(RCOfferings * _Nullable, NSError * _Nullable))completion;
         [Abstract]
         [Export("syncAttributesAndOfferingsIfNeededWithCompletion:")]
-        void SyncAttributesAndOfferingsIfNeededWithCompletion(Action<RCOfferings, NSError> completion);
+        void SyncAttributesAndOfferingsIfNeeded(Action<RCOfferings, NSError> completion);
 
         // @required -(void)setAttributes:(NSDictionary<NSString *,NSString *> * _Nonnull)attributes;
         [Abstract]
@@ -1083,33 +1083,6 @@ namespace RevenueCat
         [Abstract]
         [Export("collectDeviceIdentifiers")]
         void CollectDeviceIdentifiers();
-    }
-
-    // @interface RCPlatformInfo : NSObject
-    [BaseType(typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface RCPlatformInfo
-    {
-        // -(instancetype _Nonnull)initWithFlavor:(NSString * _Nonnull)flavor version:(NSString * _Nonnull)version __attribute__((objc_designated_initializer));
-        [Export("initWithFlavor:version:")]
-        [DesignatedInitializer]
-        IntPtr Constructor(string flavor, string version);
-    }
-
-    // @protocol PurchasesOrchestratorDelegate
-    [Protocol]
-    interface IPurchasesOrchestratorDelegate
-    {
-        // @required -(void)readyForPromotedProduct:(RCStoreProduct * _Nonnull)product purchase:(void (^ _Nonnull)(void (^ _Nonnull)(RCStoreTransaction * _Nullable, RCCustomerInfo * _Nullable, NSError * _Nullable, BOOL)))startPurchase;
-        [Abstract]
-        [Export("readyForPromotedProduct:purchase:")]
-        void ReadyForPromotedProduct(RCStoreProduct product,
-            Action<PurchaseResult> startPurchase);
-
-        // @required @property (readonly, nonatomic) BOOL shouldShowPriceConsent __attribute__((availability(watchos, unavailable))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(macos, unavailable))) __attribute__((availability(maccatalyst, introduced=13.4))) __attribute__((availability(ios, introduced=13.4)));
-        [Abstract]
-        [Export("shouldShowPriceConsent")]
-        bool ShouldShowPriceConsent { get; }
     }
 
     // @interface RCPurchases : NSObject <RCPurchasesType>
@@ -1226,7 +1199,7 @@ namespace RevenueCat
 
         // -(void)syncAttributesAndOfferingsIfNeededWithCompletion:(void (^ _Nonnull)(RCOfferings * _Nullable, NSError * _Nullable))completion;
         [Export("syncAttributesAndOfferingsIfNeededWithCompletion:")]
-        void SyncAttributesAndOfferingsIfNeededWithCompletion(Action<RCOfferings, NSError> completion);
+        void SyncAttributesAndOfferingsIfNeeded(Action<RCOfferings, NSError> completion);
 
         // +(RCPurchases * _Nonnull)configureWithConfiguration:(RCConfiguration * _Nonnull)configuration;
         [Static]
@@ -1338,7 +1311,7 @@ namespace RevenueCat
 
         // -(void)syncPurchasesWithCompletion:(void (^ _Nullable)(RCCustomerInfo * _Nullable, NSError * _Nullable))completion;
         [Export("syncPurchasesWithCompletion:")]
-        void SyncPurchasesWithCompletion([NullAllowed] Action<RCCustomerInfo, NSError> completion);
+        void SyncPurchases([NullAllowed] Action<RCCustomerInfo, NSError> completion);
 
         // -(void)syncPurchasesWithCompletionHandler:(void (^ _Nonnull)(RCCustomerInfo * _Nullable, NSError * _Nullable))completionHandler __attribute__((availability(watchos, introduced=6.2))) __attribute__((availability(tvos, introduced=13.0))) __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0)));
         [Export("syncPurchasesWithCompletionHandler:")]
@@ -1409,7 +1382,7 @@ namespace RevenueCat
 
         // -(void)showManageSubscriptionsWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completion __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable)));
         [Export("showManageSubscriptionsWithCompletion:")]
-        void ShowManageSubscriptionsWithCompletion(Action<NSError> completion);
+        void ShowManageSubscriptions(Action<NSError> completion);
 
         // -(void)showManageSubscriptionsWithCompletionHandler:(void (^ _Nonnull)(NSError * _Nullable))completionHandler __attribute__((availability(macos, introduced=10.15))) __attribute__((availability(ios, introduced=13.0))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable)));
         [Export("showManageSubscriptionsWithCompletionHandler:")]
@@ -1426,8 +1399,35 @@ namespace RevenueCat
 
         // -(void)beginRefundRequestForActiveEntitlementWithCompletion:(void (^ _Nonnull)(enum RCRefundRequestStatus, NSError * _Nullable))completionHandler __attribute__((availability(tvos, unavailable))) __attribute__((availability(watchos, unavailable))) __attribute__((availability(macos, unavailable))) __attribute__((availability(ios, introduced=15.0)));
         [Export("beginRefundRequestForActiveEntitlementWithCompletion:")]
-        void BeginRefundRequestForActiveEntitlementWithCompletion(
+        void BeginRefundRequestForActiveEntitlement(
             Action<RCRefundRequestStatus, NSError> completionHandler);
+    }
+
+    // @interface RCPlatformInfo : NSObject
+    [BaseType(typeof(NSObject))]
+    [DisableDefaultCtor]
+    interface RCPlatformInfo
+    {
+        // -(instancetype _Nonnull)initWithFlavor:(NSString * _Nonnull)flavor version:(NSString * _Nonnull)version __attribute__((objc_designated_initializer));
+        [Export("initWithFlavor:version:")]
+        [DesignatedInitializer]
+        IntPtr Constructor(string flavor, string version);
+    }
+
+    // @protocol PurchasesOrchestratorDelegate
+    [Protocol]
+    interface IPurchasesOrchestratorDelegate
+    {
+        // @required -(void)readyForPromotedProduct:(RCStoreProduct * _Nonnull)product purchase:(void (^ _Nonnull)(void (^ _Nonnull)(RCStoreTransaction * _Nullable, RCCustomerInfo * _Nullable, NSError * _Nullable, BOOL)))startPurchase;
+        [Abstract]
+        [Export("readyForPromotedProduct:purchase:")]
+        void ReadyForPromotedProduct(RCStoreProduct product,
+            Action<PurchaseResult> startPurchase);
+
+        // @required @property (readonly, nonatomic) BOOL shouldShowPriceConsent __attribute__((availability(watchos, unavailable))) __attribute__((availability(tvos, unavailable))) __attribute__((availability(macos, unavailable))) __attribute__((availability(maccatalyst, introduced=13.4))) __attribute__((availability(ios, introduced=13.4)));
+        [Abstract]
+        [Export("shouldShowPriceConsent")]
+        bool ShouldShowPriceConsent { get; }
     }
 
     // @protocol RCPurchasesDelegate <NSObject>
@@ -1460,7 +1460,7 @@ namespace RevenueCat
 
         // -(void)testSDKHealthWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completionHandler;
         [Export("testSDKHealthWithCompletion:")]
-        void TestSDKHealthWithCompletion(Action<NSError> completionHandler);
+        void TestSDKHealth(Action<NSError> completionHandler);
     }
 
     // @interface RCStoreProduct : NSObject

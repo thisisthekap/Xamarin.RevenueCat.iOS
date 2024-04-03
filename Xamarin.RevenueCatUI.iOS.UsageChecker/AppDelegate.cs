@@ -18,16 +18,16 @@ namespace Xamarin.RevenueCatUI.iOS.UsageChecker
         {
             RCPurchases.DebugLogsEnabled = true;
             RCPurchases.ConfigureWithAPIKey("theapikey");
-            
+
             // create a new window instance based on the screen size
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            var controller = new UIViewController();
+            var controller = new UINavigationController();
             Window.RootViewController = controller;
 
             // make the window visible
             Window.MakeKeyAndVisible();
 
-            controller.PresentPaywallAsync(null);
+            controller.PushPaywallAsync(null);
 
             return true;
         }

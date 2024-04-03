@@ -5,7 +5,7 @@
         <PackageId>Xamarin.RevenueCat.iOS.Extensions</PackageId>
         <Description>Contains convenience methods and async extensions for Xamarin.RevenueCat.iOS</Description>
         <Version>4.39.0.1</Version>
-        <Authors>Christian Kapplmüller, Albilaga</Authors>
+        <Authors>Christian Kapplmüller, Albilaga Linggra Pradana</Authors>
         <Company>fun.music IT GmbH</Company>
         <PackageOutputPath>nugetoutput</PackageOutputPath>
         <PackageLicensePath>..\LICENSE.txt</PackageLicensePath>

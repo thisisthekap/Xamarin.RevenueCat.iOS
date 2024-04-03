@@ -12,7 +12,7 @@ namespace RevenueCat
         Tenjin = 4,
         Facebook = 5,
         MParticle = 6,
-        AdServices = 7
+        AdServices = 7,
     }
 
     [Native]
@@ -21,7 +21,7 @@ namespace RevenueCat
         FromCacheOnly = 0,
         FetchCurrent = 1,
         NotStaleCachedOrFetched = 2,
-        CachedOrFetched = 3
+        CachedOrFetched = 3,
     }
 
     [Native]
@@ -29,7 +29,7 @@ namespace RevenueCat
     {
         Disabled = 0,
         Informational = 1,
-        Enforced = 2
+        Enforced = 2,
     }
 
     [Native]
@@ -71,7 +71,7 @@ namespace RevenueCat
         InvalidPromotionalOfferError = 34,
         OfflineConnectionError = 35,
         FeatureNotAvailableInCustomEntitlementsComputationMode = 36,
-        SignatureVerificationFailed = 37
+        SignatureVerificationFailed = 37,
     }
 
     [Native]
@@ -80,7 +80,7 @@ namespace RevenueCat
         NotDetermined = 0,
         Restricted = 1,
         Denied = 2,
-        Authorized = 3
+        Authorized = 3,
     }
 
     [Native]
@@ -89,7 +89,7 @@ namespace RevenueCat
         Unknown = 0,
         Ineligible = 1,
         Eligible = 2,
-        NoIntroOfferExists = 3
+        NoIntroOfferExists = 3,
     }
 
     [Native]
@@ -99,7 +99,7 @@ namespace RevenueCat
         Debug = 0,
         Info = 1,
         Warn = 2,
-        Error = 3
+        Error = 3,
     }
 
     [Native]
@@ -113,7 +113,7 @@ namespace RevenueCat
         ThreeMonth = 3,
         TwoMonth = 4,
         Monthly = 5,
-        Weekly = 6
+        Weekly = 6,
     }
 
     [Native]
@@ -121,7 +121,7 @@ namespace RevenueCat
     {
         Normal = 0,
         Intro = 1,
-        Trial = 2
+        Trial = 2,
     }
 
     [Native]
@@ -129,7 +129,7 @@ namespace RevenueCat
     {
         Purchased = 0,
         FamilyShared = 1,
-        Unknown = 2
+        Unknown = 2,
     }
 
     [Native]
@@ -137,7 +137,7 @@ namespace RevenueCat
     {
         UserCancelled = 0,
         Success = 1,
-        Error = 2
+        Error = 2,
     }
 
     [Native]
@@ -149,7 +149,7 @@ namespace RevenueCat
         Stripe = 3,
         Promotional = 4,
         UnknownStore = 5,
-        Amazon = 6
+        Amazon = 6,
     }
 
     [Native]
@@ -157,14 +157,14 @@ namespace RevenueCat
     {
         BillingIssue = 0,
         PriceIncreaseConsent = 1,
-        Generic = 2
+        Generic = 2,
     }
 
     [Native]
     public enum RCStoreProductCategory : long
     {
         Subscription = 0,
-        NonSubscription = 1
+        NonSubscription = 1,
     }
 
     [Native]
@@ -173,7 +173,7 @@ namespace RevenueCat
         Consumable = 0,
         NonConsumable = 1,
         NonRenewableSubscription = 2,
-        AutoRenewableSubscription = 3
+        AutoRenewableSubscription = 3,
     }
 
     [Native]
@@ -181,14 +181,14 @@ namespace RevenueCat
     {
         PayAsYouGo = 0,
         PayUpFront = 1,
-        FreeTrial = 2
+        FreeTrial = 2,
     }
 
     [Native]
     public enum RCDiscountType : long
     {
         Introductory = 0,
-        Promotional = 1
+        Promotional = 1,
     }
 
     [Native]
@@ -197,7 +197,7 @@ namespace RevenueCat
         Day = 0,
         Week = 1,
         Month = 2,
-        Year = 3
+        Year = 3,
     }
 
     [Native]
@@ -206,6 +206,6 @@ namespace RevenueCat
         NotRequested = 0,
         Verified = 1,
         VerifiedOnDevice = 3,
-        Failed = 2
+        Failed = 2,
     }
 }
