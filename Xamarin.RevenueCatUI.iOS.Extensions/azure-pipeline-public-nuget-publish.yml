@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - refs/tags/release-extensions-v*
+      - refs/tags/release-ui-extensions-v*
 
 pr: none
 

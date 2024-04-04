@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - refs/tags/release-bindings-v*
+      - refs/tags/release-ui-bindings-v*
 
 pr: none
 
