@@ -158,7 +158,7 @@
 		6D183093E65493328CFB160CE6327D6E /* ReceiptRefreshPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6DCB7DC4901FD63CCDDAE222A20EF7 /* ReceiptRefreshPolicy.swift */; };
 		6E17AA1CA5330EBB598B56C9B75CFBCF /* StoreKitError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6855FC01EDEF698EA925CCD5718546 /* StoreKitError+Extensions.swift */; };
 		7012B7794DD20785FF28FEE1727CF443 /* PaywallCacheWarming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31816E7AF5B16DE42937CD24ED83E20D /* PaywallCacheWarming.swift */; };
-		705FFD5A68DB23A9AC7797B3A57B2F04 /* RevenueCatUI-RevenueCat_RevenueCatUI in Resources */ = {isa = PBXBuildFile; fileRef = A11ADE067B216AB469480C2DE84D2D31 /* RevenueCatUI-RevenueCat_RevenueCatUI */; };
+		705FFD5A68DB23A9AC7797B3A57B2F04 /* RevenueCat_RevenueCatUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A11ADE067B216AB469480C2DE84D2D31 /* RevenueCat_RevenueCatUI.bundle */; };
 		706B6D6EC39174B5FE3F5706FDF3107E /* ProductsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0E330B41826951A072A6A252EE374D /* ProductsManager.swift */; };
 		71D0D280CC771B6C048981820626F0BD /* BackendErrorStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2BC0CAD3FBD8C1838A8DC2C976B90 /* BackendErrorStrings.swift */; };
 		72B5D5D96F902D701CC5294C5B072A2E /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628C9B7F9C3B39A0EE2661659144691 /* DebugViewController.swift */; };
@@ -652,7 +652,7 @@
 		9FD8F6B5B973819E7FB007789C700295 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9FE59D06B676356311DEBC9409E7BDEE /* TestData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = RevenueCatUI/Data/TestData.swift; sourceTree = "<group>"; };
 		A0C6CF786FCE8C4758D9195D48CDCF5A /* PurchaseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PurchaseHandler.swift; path = RevenueCatUI/Purchasing/PurchaseHandler.swift; sourceTree = "<group>"; };
-		A11ADE067B216AB469480C2DE84D2D31 /* RevenueCatUI-RevenueCat_RevenueCatUI */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "RevenueCatUI-RevenueCat_RevenueCatUI"; path = RevenueCat_RevenueCatUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11ADE067B216AB469480C2DE84D2D31 /* RevenueCat_RevenueCatUI.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevenueCat_RevenueCatUI.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13404049810AEB8A84735E0B3F234AE /* ReceiptParsingError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReceiptParsingError.swift; path = Sources/LocalReceiptParsing/ReceiptParsingError.swift; sourceTree = "<group>"; };
 		A138B8781D9D42E24FBF354557201650 /* ProductsFetcherSK1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsFetcherSK1.swift; path = Sources/Purchasing/StoreKit1/ProductsFetcherSK1.swift; sourceTree = "<group>"; };
 		A1D9E89535C03D64F3626746E85A7662 /* HTTPClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = Sources/Networking/HTTPClient/HTTPClient.swift; sourceTree = "<group>"; };
@@ -847,7 +847,7 @@
 				DCABD1DE4D5CF1130BF4A166C1DD26F0 /* Pods-RevenueCatUIProxy */,
 				74A3C88613D4EB0E63038367698A81E9 /* RevenueCat.framework */,
 				357F0C3821C69EA9072751220A9E4CFC /* RevenueCatUI.framework */,
-				A11ADE067B216AB469480C2DE84D2D31 /* RevenueCatUI-RevenueCat_RevenueCatUI */,
+				A11ADE067B216AB469480C2DE84D2D31 /* RevenueCat_RevenueCatUI.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1378,7 +1378,7 @@
 			);
 			name = "RevenueCatUI-RevenueCat_RevenueCatUI";
 			productName = RevenueCat_RevenueCatUI;
-			productReference = A11ADE067B216AB469480C2DE84D2D31 /* RevenueCatUI-RevenueCat_RevenueCatUI */;
+			productReference = A11ADE067B216AB469480C2DE84D2D31 /* RevenueCat_RevenueCatUI.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		EDC21F3D6443E0853AA9343167D4F4F1 /* Pods-RevenueCatUIProxy */ = {
@@ -1476,7 +1476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				705FFD5A68DB23A9AC7797B3A57B2F04 /* RevenueCatUI-RevenueCat_RevenueCatUI in Resources */,
+				705FFD5A68DB23A9AC7797B3A57B2F04 /* RevenueCat_RevenueCatUI.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2076,10 +2076,11 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RevenueCatUI";
 				IBSC_MODULE = RevenueCatUI;
 				INFOPLIST_FILE = "Target Support Files/RevenueCatUI/ResourceBundle-RevenueCat_RevenueCatUI-RevenueCatUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = RevenueCat_RevenueCatUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -2336,10 +2337,11 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RevenueCatUI";
 				IBSC_MODULE = RevenueCatUI;
 				INFOPLIST_FILE = "Target Support Files/RevenueCatUI/ResourceBundle-RevenueCat_RevenueCatUI-RevenueCatUI-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_NAME = RevenueCat_RevenueCatUI;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
