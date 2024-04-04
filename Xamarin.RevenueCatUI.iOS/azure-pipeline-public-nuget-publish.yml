@@ -33,6 +33,7 @@ steps:
 
 - bash: |
     cd Xamarin.RevenueCatUI.iOS
+    ./ci-build.sh
     msbuild /t:Restore /p:Configuration=Release
     msbuild /t:Build /p:Configuration=Release
     msbuild /t:Pack /p:Configuration=Release
