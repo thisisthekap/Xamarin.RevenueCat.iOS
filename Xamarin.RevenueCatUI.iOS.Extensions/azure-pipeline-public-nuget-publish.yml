@@ -32,7 +32,9 @@ steps:
   displayName: "install xamarin-ios"
 
 - bash: |
-    cd Xamarin.RevenueCatUI.iOS.Extensions
+    cd Xamarin.RevenueCatUI.iOS
+    ./ci-build.sh
+    cd ../Xamarin.RevenueCatUI.iOS.Extensions
     msbuild /t:Restore /p:Configuration=Release
     msbuild /t:Build /p:Configuration=Release
     msbuild /t:Pack /p:Configuration=Release
