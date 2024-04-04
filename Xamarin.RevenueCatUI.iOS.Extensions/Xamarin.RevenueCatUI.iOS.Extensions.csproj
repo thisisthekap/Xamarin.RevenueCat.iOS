@@ -3,7 +3,7 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <PackageId>Xamarin.RevenueCatUI.iOS.Extensions</PackageId>
-        <Version>4.39.0.7</Version>
+        <Version>4.39.0.8</Version>
         <Description>Contains bindings for https://docs.revenuecat.com/docs/ios</Description>
         <Authors>Christian Kapplmüller, Albilaga Linggra Pradana</Authors>
         <Company>fun.music IT GmbH</Company>
