@@ -52,8 +52,12 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
                 _callback = callback ?? throw new ArgumentNullException(nameof(callback));
             }
 
-            public override void PaywallViewControllerDidFinishRestoringWithCustomerInfo(
-                RCPaywallViewController controller, RCCustomerInfo customerInfo)
+            public override void DidFinishRestoring(RCPaywallViewController controller, RCCustomerInfo customerInfo)
+            {
+                _callback?.Invoke(customerInfo);
+            }
+
+            public override void DidFinishPurchasing(RCPaywallViewController controller, RCCustomerInfo customerInfo)
             {
                 _callback?.Invoke(customerInfo);
             }
