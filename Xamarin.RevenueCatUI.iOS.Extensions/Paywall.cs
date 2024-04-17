@@ -9,7 +9,7 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
     public static class Paywall
     {
         public static Task<RCCustomerInfo> PresentPaywallAsync(this UIViewController topVc, RCOffering offering,
-            CancellationToken cancellationToken = default)
+            bool animate = false, CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
@@ -21,12 +21,12 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
 
             controller.Delegate = paywallDelegate;
 
-            topVc.InvokeOnMainThread(() => { topVc.PresentViewController(controller, true, null); });
+            topVc.InvokeOnMainThread(() => { topVc.PresentViewController(controller, animate, null); });
             return tcs.Task;
         }
 
         public static Task<RCCustomerInfo> PushPaywallAsync(this UINavigationController navigationController,
-            RCOffering offering, CancellationToken cancellationToken = default)
+            RCOffering offering, bool animate = false, CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<RCCustomerInfo>();
             cancellationToken.Register(() => tcs.TrySetCanceled());
@@ -39,7 +39,7 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
             controller.Delegate = paywallDelegate;
 
             navigationController.InvokeOnMainThread(
-                () => { navigationController.PushViewController(controller, true); });
+                () => { navigationController.PushViewController(controller, animate); });
             return tcs.Task;
         }
 
@@ -52,8 +52,12 @@ namespace Xamarin.RevenueCatUI.iOS.Extensions
                 _callback = callback ?? throw new ArgumentNullException(nameof(callback));
             }
 
-            public override void PaywallViewControllerDidFinishRestoringWithCustomerInfo(
-                RCPaywallViewController controller, RCCustomerInfo customerInfo)
+            public override void DidFinishRestoring(RCPaywallViewController controller, RCCustomerInfo customerInfo)
+            {
+                _callback?.Invoke(customerInfo);
+            }
+
+            public override void DidFinishPurchasing(RCPaywallViewController controller, RCCustomerInfo customerInfo)
             {
                 _callback?.Invoke(customerInfo);
             }

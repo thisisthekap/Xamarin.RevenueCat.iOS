@@ -79,48 +79,48 @@ namespace Xamarin.RevenueCatUI.iOS
     {
         // @optional -(void)paywallViewControllerDidStartPurchase:(RCPaywallViewController * _Nonnull)controller;
         [Export("paywallViewControllerDidStartPurchase:")]
-        void PaywallViewControllerDidStartPurchase(RCPaywallViewController controller);
+        void DidStartPurchase(RCPaywallViewController controller);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didStartPurchaseWithPackage:(RCPackage * _Nonnull)package;
         [Export("paywallViewController:didStartPurchaseWithPackage:")]
-        void PaywallViewController(RCPaywallViewController controller, RCPackage package);
+        void DidStartPurchase(RCPaywallViewController controller, RCPackage package);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didFinishPurchasingWithCustomerInfo:(RCCustomerInfo * _Nonnull)customerInfo;
         [Export("paywallViewController:didFinishPurchasingWithCustomerInfo:")]
-        void PaywallViewController(RCPaywallViewController controller, RCCustomerInfo customerInfo);
+        void DidFinishPurchasing(RCPaywallViewController controller, RCCustomerInfo customerInfo);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didFinishPurchasingWithCustomerInfo:(RCCustomerInfo * _Nonnull)customerInfo transaction:(RCStoreTransaction * _Nullable)transaction;
         [Export("paywallViewController:didFinishPurchasingWithCustomerInfo:transaction:")]
-        void PaywallViewController(RCPaywallViewController controller, RCCustomerInfo customerInfo,
+        void DidFinishPurchasing(RCPaywallViewController controller, RCCustomerInfo customerInfo,
             [NullAllowed] RCStoreTransaction transaction);
 
         // @optional -(void)paywallViewControllerDidCancelPurchase:(RCPaywallViewController * _Nonnull)controller;
         [Export("paywallViewControllerDidCancelPurchase:")]
-        void PaywallViewControllerDidCancelPurchase(RCPaywallViewController controller);
+        void DidCancelPurchase(RCPaywallViewController controller);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didFailPurchasingWithError:(NSError * _Nonnull)error;
         [Export("paywallViewController:didFailPurchasingWithError:")]
-        void PaywallViewController(RCPaywallViewController controller, NSError error);
+        void DidFailPurchasing(RCPaywallViewController controller, NSError error);
 
         // @optional -(void)paywallViewControllerDidStartRestore:(RCPaywallViewController * _Nonnull)controller;
         [Export("paywallViewControllerDidStartRestore:")]
-        void PaywallViewControllerDidStartRestore(RCPaywallViewController controller);
+        void DidStartRestore(RCPaywallViewController controller);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didFinishRestoringWithCustomerInfo:(RCCustomerInfo * _Nonnull)customerInfo;
         [Export("paywallViewController:didFinishRestoringWithCustomerInfo:")]
-        void PaywallViewControllerDidFinishRestoringWithCustomerInfo(RCPaywallViewController controller,
+        void DidFinishRestoring(RCPaywallViewController controller,
             RCCustomerInfo customerInfo);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didFailRestoringWithError:(NSError * _Nonnull)error;
         [Export("paywallViewController:didFailRestoringWithError:")]
-        void PaywallViewControllerDidFailRestoringWithError(RCPaywallViewController controller, NSError error);
+        void DidFailRestoring(RCPaywallViewController controller, NSError error);
 
         // @optional -(void)paywallViewControllerWasDismissed:(RCPaywallViewController * _Nonnull)controller;
         [Export("paywallViewControllerWasDismissed:")]
-        void PaywallViewControllerWasDismissed(RCPaywallViewController controller);
+        void WasDismissed(RCPaywallViewController controller);
 
         // @optional -(void)paywallViewController:(RCPaywallViewController * _Nonnull)controller didChangeSizeTo:(CGSize)size;
         [Export("paywallViewController:didChangeSizeTo:")]
-        void PaywallViewController(RCPaywallViewController controller, CGSize size);
+        void DidChangeSizeTo(RCPaywallViewController controller, CGSize size);
     }
 }
